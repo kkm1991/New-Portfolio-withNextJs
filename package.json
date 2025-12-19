@@ -5,8 +5,9 @@
   "scripts": {
     "dev": "next dev -H 192.168.100.4",
     "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
+    "start": "NODE_ENV=production node server.js",
+    "lint": "eslint",
+    "export": "next export"
   },
   "dependencies": {
     "@tabler/icons-react": "^3.36.0",

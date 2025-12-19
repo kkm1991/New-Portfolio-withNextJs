@@ -13,6 +13,9 @@ import {
 import { useState } from "react";
 import CometCard from "@/components/finalcomponents/final-comet-card";
 import dynamic from "next/dynamic";
+import Image from "next/image";
+import WebsiteCard from "./websittecar";
+import ContactCard from "./ccontactCard";
 
 const EncryptedText = dynamic(() => import("../ui/encrypted-text"), {
   ssr: false,
@@ -20,16 +23,20 @@ const EncryptedText = dynamic(() => import("../ui/encrypted-text"), {
 export default function NavbarDemo() {
   const navItems = [
     {
+      name: "About",
+      link: "#journey",
+    },
+    {
       name: "Skills",
-      link: "#features",
+      link: "#skills",
     },
     {
       name: "Experience",
-      link: "#pricing",
+      link: "#experience",
     },
     {
       name: "Projects",
-      link: "#contact",
+      link: "#projects",
     },
     {
       name: "Contact",
@@ -41,7 +48,7 @@ export default function NavbarDemo() {
 
   return (
     <div className="relative w-full">
-      <Navbar>
+      <Navbar className="fixed top-0 left-0 w-full z-50 ">
         {/* Desktop Navigation */}
         <NavBody>
           <NavbarLogo />
@@ -76,7 +83,7 @@ export default function NavbarDemo() {
                 <span className="block">{item.name}</span>
               </a>
             ))}
-            <div className="flex w-full flex-col gap-4">
+            {/* <div className="flex w-full flex-col gap-4">
               <NavbarButton
                 onClick={() => setIsMobileMenuOpen(false)}
                 variant="primary"
@@ -91,11 +98,13 @@ export default function NavbarDemo() {
               >
                 Book a call
               </NavbarButton>
-            </div>
+            </div> */}
           </MobileNavMenu>
         </MobileNav>
       </Navbar>
-      <DummyContent />
+      <div className="pt-20">
+        <DummyContent />
+      </div>
     </div>
   );
 }
@@ -110,11 +119,14 @@ const DummyContent = () => {
       </div>
 
       <h1 className="mb-4 text-center text-3xl font-bold">
-        <p className="mx-auto max-w-lg py-10 text-left">
+        <p
+          className="mx-auto max-w-lg py-10 text-left 
+        "
+        >
           <EncryptedText
             text="Hi, I'm Khaing Kyaw Min. I build the bridge between design and data."
-            encryptedClassName="text-neutral-500"
-            revealedClassName="dark:text-white text-black"
+            encryptedClassName="dark:text-white text-black"
+            revealedClassName="text-amber-100 "
             revealDelayMs={100}
           />
         </p>
@@ -122,92 +134,457 @@ const DummyContent = () => {
       <p className="mb-10 text-center text-sm text-zinc-500">
         <EncryptedText
           text='"Full-Stack Developer & Modern Web Specialist" I build everything from complex Laravel applications to high-converting WordPress websites.'
-          encryptedClassName="text-neutral-500"
-          revealedClassName="dark:text-white text-black"
+          encryptedClassName="dark:text-white text-black"
+          revealedClassName="text-amber-100 "
           revealDelayMs={30}
         />
       </p>
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
-        {[
-          {
-            id: 1,
-            title: "The",
-            width: "md:col-span-1",
-            height: "h-60",
-            bg: "bg-neutral-100 dark:bg-neutral-800",
-          },
-          {
-            id: 2,
-            title: "First",
-            width: "md:col-span-2",
-            height: "h-60",
-            bg: "bg-neutral-100 dark:bg-neutral-800",
-          },
-          {
-            id: 3,
-            title: "Rule",
-            width: "md:col-span-1",
-            height: "h-60",
-            bg: "bg-neutral-100 dark:bg-neutral-800",
-          },
-          {
-            id: 4,
-            title: "Of",
-            width: "md:col-span-3",
-            height: "h-60",
-            bg: "bg-neutral-100 dark:bg-neutral-800",
-          },
-          {
-            id: 5,
-            title: "F",
-            width: "md:col-span-1",
-            height: "h-60",
-            bg: "bg-neutral-100 dark:bg-neutral-800",
-          },
-          {
-            id: 6,
-            title: "Club",
-            width: "md:col-span-2",
-            height: "h-60",
-            bg: "bg-neutral-100 dark:bg-neutral-800",
-          },
-          {
-            id: 7,
-            title: "Is",
-            width: "md:col-span-2",
-            height: "h-60",
-            bg: "bg-neutral-100 dark:bg-neutral-800",
-          },
-          {
-            id: 8,
-            title: "You",
-            width: "md:col-span-1",
-            height: "h-60",
-            bg: "bg-neutral-100 dark:bg-neutral-800",
-          },
-          {
-            id: 9,
-            title: "Do NOT TALK about",
-            width: "md:col-span-2",
-            height: "h-60",
-            bg: "bg-neutral-100 dark:bg-neutral-800",
-          },
-          {
-            id: 10,
-            title: "F Club",
-            width: "md:col-span-1",
-            height: "h-60",
-            bg: "bg-neutral-100 dark:bg-neutral-800",
-          },
-        ].map((box) => (
-          <div
-            key={box.id}
-            className={`${box.width} ${box.height} ${box.bg} flex items-center justify-center rounded-lg p-4 shadow-sm`}
-          >
-            <h2 className="text-xl font-medium">{box.title}</h2>
+
+      <section
+        id="journey"
+        className="py-16 px-6 md:px-20 text-white opacity-50   "
+      >
+        <h2 className="text-3xl font-bold mb-6 text-center">
+          My Journey as a Developer
+        </h2>
+        <p className="max-w-3xl mx-auto text-lg leading-relaxed  shadow-2xl rounded-3xl p-10  ">
+          I&apos;m a self-taught <strong>Full-Stack Developer</strong> who
+          thrives on building practical, real-world applications. My journey
+          began in the world of <strong>desktop software development</strong>{" "}
+          with
+          <strong>Java, VB.NET, and C#</strong>, and has evolved into a strong
+          passion for <strong>modern web and mobile development</strong>.
+          <br />
+          <br />
+          My path has been one of continuous learning and adaptation — starting
+          with desktop programming, then moving to master the fundamentals of
+          <strong>HTML, CSS, and JavaScript</strong>. I now specialize in the
+          powerful combination of <strong>PHP, Laravel (MVC & API)</strong>, and
+          <strong>Vue.js</strong> to create robust, scalable, and dynamic
+          applications. <br />
+          <br />
+          I’ve engineered complete full-stack solutions that solve real business
+          challenges, including a <strong>Salary Payment System</strong> for
+          <em>Mitzutun Myint Company</em> (initially developed with Laravel
+          Blade and later rebuilt with a Vue.js frontend and Laravel backend),
+          and a
+          <strong>
+            comprehensive Attendance and Timesheet Management System
+          </strong>
+          for <em>Win Thin & Associates Audit Firm</em>, powered by
+          <strong>Vue.js, Laravel, MySQL, AWS EC2</strong>, and
+          <strong>S3 Storage</strong>. <br />
+          <br />
+          Additionally, I developed a
+          <strong>cross-platform Android Attendance App</strong> using the
+          <strong>Ionic Capacitor framework</strong> with
+          <strong>GPS-based check-in</strong> functionality, and created a
+          <strong>Real-Time Voting System</strong> using
+          <strong>Vue.js</strong> and
+          <strong>Firebase Realtime Database</strong> for instant updates and
+          live results. <br />
+          <br />
+          I’m passionate about creating meaningful software that enhances
+          workflow and efficiency while continuously expanding my technical
+          expertise across both web and mobile platforms.
+        </p>
+      </section>
+      {/* skill section start */}
+      <section id="skills" className="py-16 px-6 md:px-20 text-amber-50">
+        <h2 className="mb-10 text-center text-3xl font-bold">
+          Skills & Technologies
+        </h2>
+
+        <div
+          className="
+      grid
+      grid-cols-3
+      sm:grid-cols-4
+      md:grid-cols-5
+      lg:grid-cols-6
+      xl:grid-cols-8
+      gap-6
+      place-items-center
+    "
+        >
+          {[
+            { src: "/logos/Laravel.svg", bg: "" },
+            { src: "/logos/vue.svg", bg: "" },
+            { src: "/logos/nuxt.svg", bg: "" },
+            { src: "/logos/react.svg", bg: "" },
+            { src: "/logos/next.svg", bg: "bg-amber-50" },
+            { src: "/logos/Bootstrap.png", bg: "" },
+            { src: "/logos/tailwindcss.svg", bg: "" },
+            { src: "/logos/wordpress.svg", bg: "bg-amber-50" },
+            { src: "/logos/ionic.svg", bg: "" },
+            { src: "/logos/mysql.svg", bg: "" },
+            { src: "/logos/github.svg", bg: "" },
+            { src: "/logos/aws.svg", bg: "bg-gray-200" },
+          ].map((logo, index) => (
+            <div
+              key={index}
+              className={`
+          ${logo.bg}
+          flex
+          items-center
+          justify-center
+          rounded-2xl
+          p-4
+          transition
+          duration-300
+          hover:scale-110
+          hover:shadow-xl
+        `}
+            >
+              <Image
+                src={logo.src}
+                width={56}
+                height={56}
+                alt="tech logo"
+                className="object-contain"
+              />
+            </div>
+          ))}
+        </div>
+      </section>
+      {/* skill section end */}
+
+      {/* experienc section start */}
+      <section id="experience" className="py-20 px-6 md:px-20 text">
+        <h2 className="mb-14 text-center text-3xl font-bold text-amber-50">
+          Experience
+        </h2>
+
+        <div className="relative mx-auto max-w-4xl">
+          {/* vertical line */}
+          <div className="absolute left-4 top-0 h-full w-[2px] bg-neutral-300 dark:bg-neutral-700 md:left-1/2 md:-translate-x-1/2" />
+
+          {/* Experience Item 1 */}
+          <div className="relative mb-16 md:flex md:justify-start">
+            <div className="relative z-10 flex h-10 w-10 items-center justify-center rounded-full bg-black text-white dark:bg-white dark:text-black md:absolute md:left-1/2 md:-translate-x-1/2">
+              1
+            </div>
+
+            <div className="ml-16 md:ml-0 md:w-1/2 md:pr-12">
+              <div className="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-6 shadow-lg">
+                <h3 className="text-xl font-semibold">Full-Stack Developer</h3>
+                <p className="mt-1 text-sm text-neutral-500">Audit Company</p>
+                <p className="mt-4 text-neutral-700 dark:text-neutral-300">
+                  Developed attendance and timesheet management systems using
+                  <strong> Vue.js</strong>, <strong>Pinia</strong>,
+                  <strong> PrimeVue</strong>, and
+                  <strong> Laravel REST API</strong>.
+                </p>
+              </div>
+            </div>
           </div>
-        ))}
-      </div>
+
+          {/* Experience Item 2 */}
+          <div className="relative md:flex md:justify-end">
+            <div className="relative z-10 flex h-10 w-10 items-center justify-center rounded-full bg-black text-white dark:bg-white dark:text-black md:absolute md:left-1/2 md:-translate-x-1/2">
+              2
+            </div>
+
+            <div className="ml-16 md:ml-0 md:w-1/2 md:pl-12">
+              <div className="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-6 shadow-lg">
+                <h3 className="text-xl font-semibold">Full-Stack Developer</h3>
+                <p className="mt-1 text-sm text-neutral-500">
+                  Previous Company
+                </p>
+                <p className="mt-4 text-neutral-700 dark:text-neutral-300">
+                  Built a salary payment system using
+                  <strong> Laravel MVC</strong>, later upgraded to a
+                  <strong> Vue.js frontend</strong> with a
+                  <strong> Laravel backend</strong> for better scalability.
+                </p>
+              </div>
+            </div>
+          </div>
+          {/* Experience Item 3 */}
+          <div className="relative mt-16 md:flex md:justify-start">
+            <div className="relative z-10 flex h-10 w-10 items-center justify-center rounded-full bg-black text-white dark:bg-white dark:text-black md:absolute md:left-1/2 md:-translate-x-1/2">
+              3
+            </div>
+
+            <div className="ml-16 md:ml-0 md:w-1/2 md:pr-12">
+              <div className="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-6 shadow-lg">
+                <h3 className="text-xl font-semibold">Web Developer</h3>
+                <p className="mt-1 text-sm text-neutral-500">
+                  Freelance & Project-Based
+                </p>
+                <p className="mt-4 text-neutral-700 dark:text-neutral-300">
+                  Built multiple websites using
+                  <strong> Vue.js</strong>,<strong> Next.js</strong>, and
+                  <strong> WordPress</strong>.
+                  <br />
+                  <br />
+                  WordPress is primarily used for
+                  <strong> static and content-focused websites</strong>,
+                  ensuring fast delivery, easy content management, and
+                  client-friendly maintenance.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* experienc section end */}
+
+      {/* projects section start */}
+      <section id="projects" className="py-20 px-6 md:px-20">
+        <h2 className="mb-14 text-center text-3xl font-bold text-amber-50">
+          Projects
+        </h2>
+
+        <div
+          className="
+      grid
+      gap-8
+      sm:grid-cols-2
+      lg:grid-cols-3
+      max-w-7xl
+      mx-auto
+    "
+        >
+          {/* Project 1 */}
+          <div
+            className="rounded-3xl
+   
+  bg-white/5
+  backdrop-blur-md
+  p-6
+  shadow-lg
+  transition
+  hover:-translate-y-2
+  hover:shadow-2xl"
+          >
+            <h3 className="text-xl font-semibold mb-2  text-amber-50">
+              Realtime Voting System
+            </h3>
+            <p className="text-sm text-amber-600 mb-4">
+              Vue.js • Firebase Realtime Database
+            </p>
+            <p className="  text-amber-100">
+              Developed a real-time voting system using Vue.js and Firebase
+              Realtime Database to deliver instant vote updates and live result
+              tracking.
+            </p>
+          </div>
+
+          {/* Project 2 */}
+          <div
+            className="rounded-3xl
+   
+  bg-white/5
+  backdrop-blur-md
+  p-6
+  shadow-lg
+  transition
+  hover:-translate-y-2
+  hover:shadow-2xl"
+          >
+            <h3 className="text-xl font-semibold mb-2 text-amber-50">
+              Salary Payment System
+            </h3>
+            <p className="text-sm text-amber-600 mb-4">
+              Laravel MVC • Vue.js • Laravel API
+            </p>
+            <p className="text-amber-100">
+              Built a salary payment system using Laravel MVC, later upgraded to
+              a Vue.js frontend with a Laravel API backend. The system has been
+              successfully used in production for over one year.
+            </p>
+          </div>
+
+          {/* Project 3 */}
+          <div
+            className=" rounded-3xl
+   
+  bg-white/5
+  backdrop-blur-md
+  p-6
+  shadow-lg
+  transition
+  hover:-translate-y-2
+  hover:shadow-2xl"
+          >
+            <h3 className="text-xl font-semibold mb-2 text-amber-50">
+              Attendance & Timesheet System
+            </h3>
+            <p className="text-sm  text-amber-600 mb-4">
+              Vue.js • Pinia • PrimeVue • Laravel API • Ionic Capacitor
+            </p>
+            <p className="text-amber-100">
+              Developed an attendance and timesheet system for an audit company
+              using Vue.js, Pinia, and PrimeVue with a Laravel API secured by
+              Sanctum. Daily attendance is captured through an Android app built
+              with Ionic Capacitor.
+            </p>
+          </div>
+
+          {/* Project 4 */}
+          <div
+            className="rounded-3xl
+   
+  bg-white/5
+  backdrop-blur-md
+  p-6
+  shadow-lg
+  transition
+  hover:-translate-y-2
+  hover:shadow-2xl"
+          >
+            <h3 className="text-xl font-semibold text-amber-50 mb-2">
+              Sales Management System
+            </h3>
+            <p className="text-sm  text-amber-600 mb-4">C#</p>
+            <p className="text-amber-100">
+              Created a sales management system using C# as my first
+              self-learning project, designed to manage sales workflows and
+              improve operational efficiency.
+            </p>
+          </div>
+        </div>
+      </section>
+      {/* projects section end */}
+
+      <section id="websites" className="py-20 px-6 md:px-20">
+        <h2 className="mb-14 text-center text-3xl font-bold text-amber-50">
+          Websites I’ve Built
+        </h2>
+
+        <div
+          className="
+      mx-auto
+      max-w-6xl
+      grid
+      gap-8
+      sm:grid-cols-2
+      lg:grid-cols-3
+    "
+        >
+          {/* Website 1 */}
+          <WebsiteCard
+            name="vue.khaingkyawmin.com"
+            tech="Vue.js"
+            url="https://vue.khaingkyawmin.com"
+          />
+
+          {/* Website 2 */}
+          <WebsiteCard
+            name="kokomyint.com"
+            tech="WordPress"
+            url="https://kokomyint.com"
+          />
+
+          {/* Website 3 */}
+          <WebsiteCard
+            name="ngwehninyee.com is under active development. Stay tuned"
+            tech="WordPress"
+            url="https://ngwehninyee.com/"
+          />
+
+          {/* Website 4 */}
+          <WebsiteCard
+            name="arrmanshin.com"
+            tech="WordPress"
+            url="https://arrmanshin.com"
+          />
+        </div>
+      </section>
+      {/* //contact start */}
+
+      <section id="contact" className="py-28 px-6 md:px-20">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 className="text-4xl font-bold mb-6 text-amber-50">
+              Ready to start your next project?
+            </h2>
+            <p className="text-neutral-50">
+              I build scalable web applications and clean websites. Let’s talk
+              about how I can help you.
+            </p>
+          </div>
+          <div className="rounded-3xl bg-white/10 backdrop-blur-xl border border-white/20 p-6 sm:p-8 flex flex-col items-center justify-center space-y-6">
+            {/* Top icons row */}
+            <div className="flex flex-row justify-center items-center space-x-6">
+              {/* Email */}
+              <a
+                href="mailto:khaingkyawmin1991@gmail.com"
+                className="text-sm sm:text-base md:text-lg font-medium hover:text-white transition"
+              >
+                <Image
+                  src="/logos/gmail.svg"
+                  width={56}
+                  height={56}
+                  alt="Gmail"
+                  className="object-contain"
+                />
+              </a>
+
+              {/* GitHub */}
+              <a
+                href="https://github.com/kkm1991"
+                target="_blank"
+                className="text-sm sm:text-base md:text-lg font-medium hover:text-white transition"
+              >
+                <Image
+                  src="/logos/github.svg"
+                  width={56}
+                  height={56}
+                  alt="GitHub"
+                  className="object-contain"
+                />
+              </a>
+
+              {/* LinkedIn */}
+              <a
+                href="https://www.linkedin.com/in/khaing-kyaw-min-14259b14a/"
+                target="_blank"
+                className="text-sm sm:text-base md:text-lg font-medium hover:text-white transition"
+              >
+                <Image
+                  src="/logos/linkedin.svg"
+                  width={56}
+                  height={56}
+                  alt="LinkedIn"
+                  className="object-contain"
+                />
+              </a>
+            </div>
+
+            {/* Phone */}
+            <a
+              href="tel:+959795388859"
+              className="flex items-center justify-center gap-3 text-sm sm:text-base md:text-lg font-medium hover:text-white transition"
+            >
+              <Image
+                src="/logos/phone.png"
+                width={32}
+                height={32}
+                alt="Phone"
+                className="object-contain"
+              />
+              <span className="text-amber-50">+95 979 538 8859</span>
+            </a>
+
+            {/* Viber */}
+            <a
+              href="tel:+959795388859"
+              className="flex items-center justify-center gap-3 text-sm sm:text-base md:text-lg font-medium hover:text-white transition"
+            >
+              <Image
+                src="/logos/viber.png"
+                width={32}
+                height={32}
+                alt="Viber"
+                className="object-contain"
+              />
+              <span className="text-amber-50">+95 979 538 8859</span>
+            </a>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
