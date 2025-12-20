@@ -15,7 +15,7 @@ import CometCard from "@/components/finalcomponents/final-comet-card";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import WebsiteCard from "./websittecar";
-import ContactCard from "./ccontactCard";
+import { Tooltip } from "./tooltip";
 
 const EncryptedText = dynamic(() => import("../ui/encrypted-text"), {
   ssr: false,
@@ -189,6 +189,7 @@ const DummyContent = () => {
           expertise across both web and mobile platforms.
         </p>
       </section>
+
       {/* skill section start */}
       <section id="skills" className="py-16 px-6 md:px-20 text-amber-50">
         <h2 className="mb-10 text-center text-3xl font-bold">
@@ -208,18 +209,78 @@ const DummyContent = () => {
     "
         >
           {[
-            { src: "/logos/Laravel.svg", bg: "" },
-            { src: "/logos/vue.svg", bg: "" },
-            { src: "/logos/nuxt.svg", bg: "" },
-            { src: "/logos/react.svg", bg: "" },
-            { src: "/logos/next.svg", bg: "bg-amber-50" },
-            { src: "/logos/Bootstrap.png", bg: "" },
-            { src: "/logos/tailwindcss.svg", bg: "" },
-            { src: "/logos/wordpress.svg", bg: "bg-amber-50" },
-            { src: "/logos/ionic.svg", bg: "" },
-            { src: "/logos/mysql.svg", bg: "" },
-            { src: "/logos/github.svg", bg: "" },
-            { src: "/logos/aws.svg", bg: "bg-gray-200" },
+            {
+              src: "/logos/Laravel.svg",
+              bg: "",
+              tooltip:
+                'Laravel is a free, open-source PHP web framework designed to make web development faster and easier by providing a structured, "expressive" syntax.',
+            },
+            {
+              src: "/logos/vue.svg",
+              bg: "",
+              tooltip:
+                "Vue.js (or simply Vue) is a popular, open-source JavaScript framework used to build user interfaces and single-page applications (SPAs).",
+            },
+            {
+              src: "/logos/nuxt.svg",
+              bg: "",
+              tooltip:
+                'Nuxt.js is a powerful, open-source framework built on top of Vue.js that makes web development faster and more organized.If Vue is the "engine," Nuxt is the "luxury car" built around it—it comes pre-configured with everything you need to build production-ready applications, especially those that need to be fast and SEO-friendly.',
+            },
+            {
+              src: "/logos/react.svg",
+              bg: "",
+              tooltip:
+                "React.js (or simply React) is a popular, open-source JavaScript library developed by Meta (Facebook) for building user interfaces, specifically for single-page applications.",
+            },
+            {
+              src: "/logos/next.svg",
+              bg: "bg-amber-50",
+              tooltip:
+                'Next.js is a powerful framework built on top of React that gives you all the tools needed to build production-ready, high-performance websites.If React is the "engine," Next.js is the entire "car." It solves the biggest limitation of standard React: the fact that React usually renders everything in the browser (Client-Side Rendering), which can be bad for SEO and slow on older devices.',
+            },
+            {
+              src: "/logos/Bootstrap.png",
+              bg: "",
+              tooltip:
+                'Bootstrap is the world’s most popular free frontend toolkit. It is a collection of pre-written CSS and JavaScript code that helps developers build responsive, mobile-first websites incredibly fast.Instead of writing hundreds of lines of CSS to style a button or a navigation bar, you simply apply a "class" name (like btn-primary) to your HTML tags.',
+            },
+            {
+              src: "/logos/tailwindcss.svg",
+              bg: "",
+              tooltip:
+                'Tailwind CSS is a "utility-first" CSS framework. Unlike Bootstrap, which gives you pre-designed components (like a .btn class), Tailwind gives you low-level utility classes that let you build completely custom designs directly in your HTML.Instead of writing CSS in a separate file, you style elements by stringing together simple classes like bg-blue-500 (background color), p-4 (padding), and flex (layout).',
+            },
+            {
+              src: "/logos/wordpress.svg",
+              bg: "bg-amber-50",
+              tooltip:
+                "WordPress is the world’s most popular Content Management System (CMS). It is a piece of software that allows you to create, manage, and publish content on the web without needing to write code.",
+            },
+            {
+              src: "/logos/ionic.svg",
+              bg: "",
+              tooltip:
+                'Ionic is an open-source framework used to build high-quality mobile and desktop apps using web technologies you already know: HTML, CSS, and JavaScript.Essentially, it allows you to "write once, run anywhere." You build your app like a website, and Ionic packages it so it looks and feels like a native app on iOS, Android, and the Web.',
+            },
+            {
+              src: "/logos/mysql.svg",
+              bg: "",
+              tooltip:
+                "MySQL is the world’s most popular open-source Relational Database Management System (RDBMS).",
+            },
+            {
+              src: "/logos/github.svg",
+              bg: "",
+              tooltip:
+                "GitHub is a cloud-based platform that helps developers store, manage, and share their code. It is built on top of a tool called Git.",
+            },
+            {
+              src: "/logos/aws.svg",
+              bg: "bg-gray-200",
+              tooltip:
+                'AWS (Amazon Web Services) is the world’s most comprehensive and widely used cloud computing platform.Instead of a company buying and maintaining their own physical servers and data centers in a building, they "rent" those resources from Amazon over the internet. You only pay for what you actually use—much like paying for electricity or water.',
+            },
           ].map((logo, index) => (
             <div
               key={index}
@@ -236,13 +297,18 @@ const DummyContent = () => {
           hover:shadow-xl
         `}
             >
-              <Image
-                src={logo.src}
-                width={56}
-                height={56}
-                alt="tech logo"
-                className="object-contain"
-              />
+              <Tooltip
+                containerClassName="text-neutral-600 dark:text-neutral-400"
+                content={logo.tooltip}
+              >
+                <Image
+                  src={logo.src}
+                  width={56}
+                  height={56}
+                  alt="tech logo"
+                  className="object-contain"
+                />
+              </Tooltip>
             </div>
           ))}
         </div>
