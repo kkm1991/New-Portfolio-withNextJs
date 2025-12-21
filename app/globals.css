@@ -47,27 +47,27 @@ body {
 
 /* Individual Blobs with unique animations */
 .blob-1 {
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, #4f46e5 0%, transparent 70%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, #4f46e5 0%, transparent 100%);
   top: -10%;
   left: -10%;
   animation: float-slow 25s infinite alternate ease-in-out;
 }
 
 .blob-2 {
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, #06b6d4 0%, transparent 70%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, #06b6d4 0%, transparent 100%);
   bottom: 10%;
   right: 10%;
   animation: float-medium 30s infinite alternate-reverse ease-in-out;
 }
 
 .blob-3 {
-  width: 450px;
-  height: 450px;
-  background: radial-gradient(circle, #7c3aed 0%, transparent 70%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, #7c3aed 0%, transparent 100%);
   top: 40%;
   left: 30%;
   animation: float-fast 20s infinite alternate ease-in-out;

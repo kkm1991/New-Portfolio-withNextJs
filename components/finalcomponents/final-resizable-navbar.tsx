@@ -16,6 +16,7 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 import WebsiteCard from "./websittecar";
 import { Tooltip } from "./tooltip";
+import ProjectCarousel from "./projectCarousel";
 
 const EncryptedText = dynamic(() => import("../ui/encrypted-text"), {
   ssr: false,
@@ -398,10 +399,10 @@ const DummyContent = () => {
 
       {/* projects section start */}
       <section id="projects" className="py-20 px-6 md:px-20">
-        <h2 className="mb-14 text-center text-3xl font-bold text-amber-50">
+        {/* <h2 className="mb-14 text-center text-3xl font-bold text-amber-50">
           Projects
-        </h2>
-
+        </h2> */}
+        {/* 
         <div
           className="
       grid
@@ -412,7 +413,7 @@ const DummyContent = () => {
       mx-auto
     "
         >
-          {/* Project 1 */}
+          
           <div
             className="rounded-3xl
    
@@ -437,7 +438,7 @@ const DummyContent = () => {
             </p>
           </div>
 
-          {/* Project 2 */}
+         
           <div
             className="rounded-3xl
    
@@ -462,7 +463,7 @@ const DummyContent = () => {
             </p>
           </div>
 
-          {/* Project 3 */}
+        
           <div
             className=" rounded-3xl
    
@@ -488,7 +489,7 @@ const DummyContent = () => {
             </p>
           </div>
 
-          {/* Project 4 */}
+         
           <div
             className="rounded-3xl
    
@@ -510,9 +511,18 @@ const DummyContent = () => {
               improve operational efficiency.
             </p>
           </div>
-        </div>
+        </div> */}
       </section>
       {/* projects section end */}
+
+      {/* projects carousel start */}
+      <section>
+        <h2 className="mb-0 text-center text-3xl font-bold text-amber-50">
+          Projects
+        </h2>
+        <ProjectCarousel />
+      </section>
+      {/* project carousel end */}
 
       <section id="websites" className="py-20 px-6 md:px-20">
         <h2 className="mb-14 text-center text-3xl font-bold text-amber-50">
