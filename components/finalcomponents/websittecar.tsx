@@ -18,8 +18,8 @@ const WebsiteCard = ({
         group
         relative
         rounded-3xl
-        border border-white/20
-        bg-white/10
+       
+        
         backdrop-blur-xl
         p-6
         shadow-xl
