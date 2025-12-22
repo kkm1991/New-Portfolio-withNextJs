@@ -141,14 +141,11 @@ const DummyContent = () => {
         />
       </p>
 
-      <section
-        id="journey"
-        className="py-16 px-6 md:px-20 text-white opacity-50   "
-      >
+      <section id="journey" className="py-16 px-6 md:px-20 text-white    ">
         <h2 className="text-3xl font-bold mb-6 text-center">
           My Journey as a Developer
         </h2>
-        <p className="max-w-3xl mx-auto text-lg leading-relaxed  shadow-2xl rounded-3xl p-10  ">
+        <p className="max-w-3xl mx-auto text-lg leading-relaxed  shadow-2xl  rounded-3xl p-10  backdrop-blur-xl ">
           I&apos;m a self-taught <strong>Full-Stack Developer</strong> who
           thrives on building practical, real-world applications. My journey
           began in the world of <strong>desktop software development</strong>{" "}
@@ -581,7 +578,7 @@ const DummyContent = () => {
               about how I can help you.
             </p>
           </div>
-          <div className="rounded-3xl bg-white/10 backdrop-blur-xl border border-white/20 p-6 sm:p-8 flex flex-col items-center justify-center space-y-6">
+          <div className="rounded-3xl   backdrop-blur-2xl border border-white/2 p-6 sm:p-8 flex flex-col items-center justify-center space-y-6">
             {/* Top icons row */}
             <div className="flex flex-row justify-center items-center space-x-6">
               {/* Email */}

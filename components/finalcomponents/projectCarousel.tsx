@@ -140,7 +140,7 @@ export default function ProjectCarousel() {
                 duration: 0.6,
               },
             }}
-            className={`absolute w-[280px] h-[500px] pb-10 select-none rounded-3xl bg-gradient-to-br p-5 text-white shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/5 ${
+            className={`absolute w-[280px] h-[500px] pb-10 select-none backdrop-blur-2xl rounded-3xl bg-gradient-to-br p-5 text-white shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/5 ${
               isActive ? "cursor-grab z-20" : "cursor-default"
             }`}
             onPointerDown={() => {
