@@ -17,6 +17,7 @@ import Image from "next/image";
 import WebsiteCard from "./websittecar";
 import { Tooltip } from "./tooltip";
 import ProjectCarousel from "./projectCarousel";
+import Themetoggle from "@/components/finalcomponents/Themetoggle";
 
 const EncryptedText = dynamic(() => import("../ui/encrypted-text"), {
   ssr: false,
@@ -54,10 +55,9 @@ export default function NavbarDemo() {
         <NavBody>
           <NavbarLogo />
           <NavItems items={navItems} />
-          {/* <div className="flex items-center gap-4">
-            <NavbarButton variant="secondary">Login</NavbarButton>
-            <NavbarButton variant="primary">Book a call</NavbarButton>
-          </div> */}
+          <div className="flex items-center gap-4 z-50">
+            <Themetoggle></Themetoggle>
+          </div>
         </NavBody>
 
         {/* Mobile Navigation */}
@@ -84,22 +84,9 @@ export default function NavbarDemo() {
                 <span className="block">{item.name}</span>
               </a>
             ))}
-            {/* <div className="flex w-full flex-col gap-4">
-              <NavbarButton
-                onClick={() => setIsMobileMenuOpen(false)}
-                variant="primary"
-                className="w-full"
-              >
-                Login
-              </NavbarButton>
-              <NavbarButton
-                onClick={() => setIsMobileMenuOpen(false)}
-                variant="primary"
-                className="w-full"
-              >
-                Book a call
-              </NavbarButton>
-            </div> */}
+            <div className="flex w-20 flex-col gap-4">
+              <Themetoggle></Themetoggle>
+            </div>
           </MobileNavMenu>
         </MobileNav>
       </Navbar>
@@ -126,8 +113,8 @@ const DummyContent = () => {
         >
           <EncryptedText
             text="Hi, I'm Khaing Kyaw Min. I build the bridge between design and data."
-            encryptedClassName="dark:text-white text-black"
-            revealedClassName="text-amber-100 "
+            encryptedClassName="encrypttextClassname"
+            revealedClassName="encrypttext-related "
             revealDelayMs={100}
           />
         </p>
@@ -135,8 +122,8 @@ const DummyContent = () => {
       <p className="mb-10 text-center text-sm text-zinc-500">
         <EncryptedText
           text='"Full-Stack Developer & Modern Web Specialist" I build everything from complex Laravel applications to high-converting WordPress websites.'
-          encryptedClassName="dark:text-white text-black"
-          revealedClassName="text-amber-100 "
+          encryptedClassName="encrypttextClassname"
+          revealedClassName="encrypttext-related  "
           revealDelayMs={30}
         />
       </p>
@@ -321,7 +308,7 @@ const DummyContent = () => {
 
         <div className="relative mx-auto max-w-4xl">
           {/* vertical line */}
-          <div className="absolute left-4 top-0 h-full w-[2px] bg-neutral-300 dark:bg-neutral-700 md:left-1/2 md:-translate-x-1/2" />
+          <div className="absolute left-4 top-0 h-full w-[2px] bg-neutral-400 dark:bg-neutral-700 md:left-1/2 md:-translate-x-1/2" />
 
           {/* Experience Item 1 */}
           <div className="relative mb-16 md:flex md:justify-start">
@@ -330,7 +317,7 @@ const DummyContent = () => {
             </div>
 
             <div className="ml-16 md:ml-0 md:w-1/2 md:pr-12">
-              <div className="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-6 shadow-lg">
+              <div className="rounded-2xl  border-neutral-200 dark:border-neutral-800 backdrop-blur-3xl  dark:bg-neutral-900 p-6 shadow-lg">
                 <h3 className="text-xl font-semibold">Full-Stack Developer</h3>
                 <p className="mt-1 text-sm text-neutral-500">Audit Company</p>
                 <p className="mt-4 text-neutral-700 dark:text-neutral-300">
@@ -350,7 +337,7 @@ const DummyContent = () => {
             </div>
 
             <div className="ml-16 md:ml-0 md:w-1/2 md:pl-12">
-              <div className="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-6 shadow-lg">
+              <div className="rounded-2xl  border-neutral-200 dark:border-neutral-800  backdrop-blur-3xl dark:bg-neutral-900 p-6 shadow-lg">
                 <h3 className="text-xl font-semibold">Full-Stack Developer</h3>
                 <p className="mt-1 text-sm text-neutral-500">
                   Previous Company
@@ -371,7 +358,7 @@ const DummyContent = () => {
             </div>
 
             <div className="ml-16 md:ml-0 md:w-1/2 md:pr-12">
-              <div className="rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-6 shadow-lg">
+              <div className="rounded-2xl border-0.5 border-neutral-200 dark:border-neutral-800 backdrop-blur-3xl dark:bg-neutral-900 p-6 shadow-lg">
                 <h3 className="text-xl font-semibold">Web Developer</h3>
                 <p className="mt-1 text-sm text-neutral-500">
                   Freelance & Project-Based
@@ -393,124 +380,6 @@ const DummyContent = () => {
         </div>
       </section>
       {/* experienc section end */}
-
-      {/* projects section start */}
-      <section id="projects" className="py-20 px-6 md:px-20">
-        {/* <h2 className="mb-14 text-center text-3xl font-bold text-amber-50">
-          Projects
-        </h2> */}
-        {/* 
-        <div
-          className="
-      grid
-      gap-8
-      sm:grid-cols-2
-      lg:grid-cols-3
-      max-w-7xl
-      mx-auto
-    "
-        >
-          
-          <div
-            className="rounded-3xl
-   
-  bg-white/5
-  backdrop-blur-md
-  p-6
-  shadow-lg
-  transition
-  hover:-translate-y-2
-  hover:shadow-2xl"
-          >
-            <h3 className="text-xl font-semibold mb-2  text-amber-50">
-              Realtime Voting System
-            </h3>
-            <p className="text-sm text-amber-600 mb-4">
-              Vue.js • Firebase Realtime Database
-            </p>
-            <p className="  text-amber-100">
-              Developed a real-time voting system using Vue.js and Firebase
-              Realtime Database to deliver instant vote updates and live result
-              tracking.
-            </p>
-          </div>
-
-         
-          <div
-            className="rounded-3xl
-   
-  bg-white/5
-  backdrop-blur-md
-  p-6
-  shadow-lg
-  transition
-  hover:-translate-y-2
-  hover:shadow-2xl"
-          >
-            <h3 className="text-xl font-semibold mb-2 text-amber-50">
-              Salary Payment System
-            </h3>
-            <p className="text-sm text-amber-600 mb-4">
-              Laravel MVC • Vue.js • Laravel API
-            </p>
-            <p className="text-amber-100">
-              Built a salary payment system using Laravel MVC, later upgraded to
-              a Vue.js frontend with a Laravel API backend. The system has been
-              successfully used in production for over one year.
-            </p>
-          </div>
-
-        
-          <div
-            className=" rounded-3xl
-   
-  bg-white/5
-  backdrop-blur-md
-  p-6
-  shadow-lg
-  transition
-  hover:-translate-y-2
-  hover:shadow-2xl"
-          >
-            <h3 className="text-xl font-semibold mb-2 text-amber-50">
-              Attendance & Timesheet System
-            </h3>
-            <p className="text-sm  text-amber-600 mb-4">
-              Vue.js • Pinia • PrimeVue • Laravel API • Ionic Capacitor
-            </p>
-            <p className="text-amber-100">
-              Developed an attendance and timesheet system for an audit company
-              using Vue.js, Pinia, and PrimeVue with a Laravel API secured by
-              Sanctum. Daily attendance is captured through an Android app built
-              with Ionic Capacitor.
-            </p>
-          </div>
-
-         
-          <div
-            className="rounded-3xl
-   
-  bg-white/5
-  backdrop-blur-md
-  p-6
-  shadow-lg
-  transition
-  hover:-translate-y-2
-  hover:shadow-2xl"
-          >
-            <h3 className="text-xl font-semibold text-amber-50 mb-2">
-              Sales Management System
-            </h3>
-            <p className="text-sm  text-amber-600 mb-4">C#</p>
-            <p className="text-amber-100">
-              Created a sales management system using C# as my first
-              self-learning project, designed to manage sales workflows and
-              improve operational efficiency.
-            </p>
-          </div>
-        </div> */}
-      </section>
-      {/* projects section end */}
 
       {/* projects carousel start */}
       <section>
@@ -541,6 +410,7 @@ const DummyContent = () => {
             name="vue.khaingkyawmin.com"
             tech="Vue.js"
             url="https://vue.khaingkyawmin.com"
+            icon="/images/kkmlogo.png"
           />
 
           {/* Website 2 */}
@@ -548,6 +418,7 @@ const DummyContent = () => {
             name="kokomyint.com"
             tech="WordPress"
             url="https://kokomyint.com"
+            icon="/images/kokomyint.png"
           />
 
           {/* Website 3 */}
@@ -555,6 +426,7 @@ const DummyContent = () => {
             name="ngwehninyee.com is under active development. Stay tuned"
             tech="WordPress"
             url="https://ngwehninyee.com/"
+            icon="/images/nhy.png"
           />
 
           {/* Website 4 */}
@@ -562,13 +434,14 @@ const DummyContent = () => {
             name="arrmanshin.com"
             tech="WordPress"
             url="https://arrmanshin.com"
+            icon="/images/arrmanshin.png"
           />
         </div>
       </section>
       {/* //contact start */}
 
       <section id="contact" className="py-28 px-6 md:px-20">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center ">
           <div>
             <h2 className="text-4xl font-bold mb-6 text-amber-50">
               Ready to start your next project?
@@ -578,7 +451,7 @@ const DummyContent = () => {
               about how I can help you.
             </p>
           </div>
-          <div className="rounded-3xl   backdrop-blur-2xl border border-white/2 p-6 sm:p-8 flex flex-col items-center justify-center space-y-6">
+          <div className="rounded-3xl shadow-sm  backdrop-blur-2xl border border-white/2 p-6 sm:p-8 flex flex-col items-center justify-center space-y-6">
             {/* Top icons row */}
             <div className="flex flex-row justify-center items-center space-x-6">
               {/* Email */}
@@ -638,7 +511,7 @@ const DummyContent = () => {
                 alt="Phone"
                 className="object-contain"
               />
-              <span className="text-amber-50">+95 979 538 8859</span>
+              <h3 className="text-amber-50">+95 979 538 8859</h3>
             </a>
 
             {/* Viber */}
@@ -653,7 +526,7 @@ const DummyContent = () => {
                 alt="Viber"
                 className="object-contain"
               />
-              <span className="text-amber-50">+95 979 538 8859</span>
+              <h3 className="text-amber-50">+95 979 538 8859</h3>
             </a>
           </div>
         </div>

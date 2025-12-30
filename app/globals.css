@@ -1,10 +1,14 @@
 @import "tailwindcss";
 
+/* ===============================
+   CSS VARIABLES (BASE)
+================================ */
 :root {
   --background: #ffffff;
   --foreground: #171717;
 }
 
+/* Tailwind variable bridge */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -12,41 +16,96 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ===============================
+   THEME CONTROL (GLOBAL)
+================================ */
+html.dark {
+  --background: #030303;
+  --foreground: #ededed;
+}
+
+html.light {
+  --background: #ffffff;
+  --foreground: #0f172a;
+}
+
+html.dark .encrypttext-related {
+  color: #e8eac2;
+}
+html.light .encrypttext-related {
+  color: #696161;
+}
+html.dark .encrypttextClassname {
+  color: #696161;
+}
+html.light .encrypttextClassname {
+  color: #bad56a;
+}
+html.light h2,
+html.light h3,
+html.light p {
+  color: #696161;
+}
+
+html.dark h2,
+html.dark h3,
+html.dark p {
+  color: #e8eac2;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  transition: background-color 300ms ease, color 300ms ease;
 }
 
-/* Container holds the background fixed */
+/* ===============================
+   BACKGROUND CONTAINER
+================================ */
 .bg-container {
   position: fixed;
   inset: 0;
-  background-color: #030303; /* Deep black for contrast */
   overflow: hidden;
   z-index: -1;
 }
 
-/* Base blob styling with improved blur and blending */
+/* Dark / Light background color */
+html.dark .bg-container {
+  background-color: #030303;
+  color: #ededed;
+}
+
+html.light .bg-container {
+  background-color: #f7f8fb;
+  color: #0f172a;
+}
+
+/* ===============================
+   BLOBS (BASE)
+================================ */
 .blob {
   position: absolute;
   border-radius: 50%;
-  filter: blur(
-    80px
-  ); /* Slightly sharper than before for better color definition */
   opacity: 0.5;
-  mix-blend-mode: screen; /* Blends colors where they overlap */
+  filter: blur(80px);
 }
 
-/* Individual Blobs with unique animations */
-.blob-1 {
+/* Blend modes */
+html.dark .blob {
+  mix-blend-mode: screen;
+}
+
+html.light .blob {
+  mix-blend-mode: multiply;
+  opacity: 0.6;
+  filter: blur(100px);
+}
+
+/* ===============================
+   BLOBS (DARK THEME)
+================================ */
+html.dark .blob-1 {
   width: 800px;
   height: 800px;
   background: radial-gradient(circle, #4f46e5 0%, transparent 100%);
@@ -55,7 +114,7 @@ body {
   animation: float-slow 25s infinite alternate ease-in-out;
 }
 
-.blob-2 {
+html.dark .blob-2 {
   width: 600px;
   height: 600px;
   background: radial-gradient(circle, #06b6d4 0%, transparent 100%);
@@ -64,8 +123,8 @@ body {
   animation: float-medium 30s infinite alternate-reverse ease-in-out;
 }
 
-.blob-3 {
-  width: 800px;
+html.dark .blob-3 {
+  width: 900px;
   height: 800px;
   background: radial-gradient(circle, #7c3aed 0%, transparent 100%);
   top: 40%;
@@ -73,7 +132,39 @@ body {
   animation: float-fast 20s infinite alternate ease-in-out;
 }
 
-/* Dynamic Keyframes for non-linear movement */
+/* ===============================
+   BLOBS (LIGHT THEME)
+================================ */
+html.light .blob-1 {
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, #c7d2fe 0%, transparent 70%);
+  top: -15%;
+  left: -10%;
+  animation: float-slow 25s infinite alternate ease-in-out;
+}
+
+html.light .blob-2 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, #bae6fd 0%, transparent 70%);
+  bottom: 5%;
+  right: 10%;
+  animation: float-medium 30s infinite alternate-reverse ease-in-out;
+}
+
+html.light .blob-3 {
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, #e9d5ff 0%, transparent 70%);
+  top: 35%;
+  left: 25%;
+  animation: float-fast 20s infinite alternate ease-in-out;
+}
+
+/* ===============================
+   ANIMATIONS
+================================ */
 @keyframes float-slow {
   0% {
     transform: translate(0, 0) rotate(0deg) scale(1);
@@ -101,17 +192,31 @@ body {
   }
 }
 
-/* High-end Textures: Grain + Grid */
-.bg-container::before {
+/* ===============================
+   TEXTURE OVERLAYS
+================================ */
+
+/* Grain */
+html.dark .bg-container::before {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
   pointer-events: none;
   z-index: 1;
 }
 
-.bg-container::after {
+html.light .bg-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Grid */
+html.dark .bg-container::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -120,7 +225,18 @@ body {
       transparent 1px
     ),
     linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-  background-size: 50px 50px; /* Subtle grid */
+  background-size: 50px 50px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+html.light .bg-container::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
   pointer-events: none;
   z-index: 2;
 }

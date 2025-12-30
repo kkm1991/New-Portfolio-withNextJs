@@ -140,7 +140,7 @@ export default function ProjectCarousel() {
                 duration: 0.6,
               },
             }}
-            className={`absolute w-[280px] h-[500px] pb-10 select-none backdrop-blur-2xl rounded-3xl bg-gradient-to-br p-5 text-white shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/5 ${
+            className={`absolute w-[280px] h-[500px] pb-10 select-none backdrop-blur-2xl rounded-3xl bg-gradient-to-br p-5 text-white shadow-[0_20px_50px_rgba(0,0,0,0.2)] border border-white/5 ${
               isActive ? "cursor-grab z-20" : "cursor-default"
             }`}
             onPointerDown={() => {
@@ -165,14 +165,12 @@ export default function ProjectCarousel() {
               <div>
                 <motion.h3
                   animate={{ opacity: isActive ? 1 : 0.4 }}
-                  className="mb-1.5 text-2xl font-bold tracking-tight"
+                  className="mb-1.5 text-2xl font-bold tracking-tight  "
                 >
                   {project.title}
                 </motion.h3>
 
-                <motion.h4 className="text-amber-600">
-                  {project.tools}
-                </motion.h4>
+                <motion.h4 className="text-blue-700">{project.tools}</motion.h4>
 
                 <p className="mt-3 text-lg font-medium text-gray-300">
                   {project.desc}

@@ -1,13 +1,15 @@
 import React from "react";
-
+import Image from "next/image";
 const WebsiteCard = ({
   name,
   tech,
   url,
+  icon,
 }: {
   name: string;
   tech: string;
   url: string;
+  icon: string;
 }) => {
   return (
     <a
@@ -47,16 +49,25 @@ const WebsiteCard = ({
         "
       />
 
-      <h3 className="relative text-xl font-semibold mb-2 text-amber-50">
+      <h3 className="relative text-xl font-semibold mb-2 text-yellow-600">
         {name}
       </h3>
 
       <p className="relative text-sm text-neutral-400 mb-6">
-        Built with <span className="font-medium">{tech}</span>
+        Built with <span className="font-medium text-blue-700">{tech}</span>
       </p>
 
       <span className="relative inline-flex items-center text-sm font-medium text-amber-600">
-        Visit Website →
+        Visit Website →{" "}
+        {icon?.trim() !== "" && (
+          <Image
+            className="ms-10"
+            src={icon}
+            alt="no image"
+            width={100}
+            height={100}
+          ></Image>
+        )}
       </span>
     </a>
   );
