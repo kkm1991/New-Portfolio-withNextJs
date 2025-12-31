@@ -2,7 +2,7 @@
 
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-
+import clsx from "clsx";
 const projects = [
   {
     id: 1,
@@ -140,9 +140,11 @@ export default function ProjectCarousel() {
                 duration: 0.6,
               },
             }}
-            className={`absolute w-[280px] h-[500px] pb-10 select-none backdrop-blur-2xl rounded-3xl bg-gradient-to-br p-5 text-white shadow-[0_20px_50px_rgba(0,0,0,0.2)] border border-white/5 ${
+            className={clsx(
+              "absolute w-[280px] h-[500px] pb-10 select-none backdrop-blur-2xl rounded-3xl bg-gradient-to-br p-5 text-white",
+              "shadow-[0_20px_50px_rgba(0,0,0,0.2)] border border-white/5",
               isActive ? "cursor-grab z-20" : "cursor-default"
-            }`}
+            )}
             onPointerDown={() => {
               setIsHolding(true);
               setIsPaused(true);
@@ -188,9 +190,10 @@ export default function ProjectCarousel() {
         {projects.map((_, i) => (
           <div
             key={i}
-            className={`h-1.5 rounded-full transition-all duration-500 ${
+            className={clsx(
+              "h-1.5 rounded-full transition-all duration-500",
               active === i ? "w-8 bg-blue-500" : "w-2 bg-gray-600"
-            }`}
+            )}
           />
         ))}
       </div>

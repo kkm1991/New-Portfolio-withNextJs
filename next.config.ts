@@ -7,6 +7,7 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true, // <-- disables server-side image optimization
   },
+  reactCompiler: true,
 };
 
 export default nextConfig;

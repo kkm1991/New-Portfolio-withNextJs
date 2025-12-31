@@ -107,10 +107,7 @@ const DummyContent = () => {
       </div>
 
       <h1 className="mb-4 text-center text-3xl font-bold">
-        <p
-          className="mx-auto max-w-lg py-10 text-left 
-        "
-        >
+        <p className="mx-auto max-w-lg py-10 text-left ">
           <EncryptedText
             text="Hi, I'm Khaing Kyaw Min. I build the bridge between design and data."
             encryptedClassName="encrypttextClassname"
@@ -128,7 +125,7 @@ const DummyContent = () => {
         />
       </p>
 
-      <section id="journey" className="py-16 px-6 md:px-20 text-white    ">
+      <section id="journey" className="py-16 px-6 md:px-20 text-white  ">
         <h2 className="text-3xl font-bold mb-6 text-center">
           My Journey as a Developer
         </h2>
@@ -181,18 +178,7 @@ const DummyContent = () => {
           Skills & Technologies
         </h2>
 
-        <div
-          className="
-      grid
-      grid-cols-3
-      sm:grid-cols-4
-      md:grid-cols-5
-      lg:grid-cols-6
-      xl:grid-cols-8
-      gap-6
-      place-items-center
-    "
-        >
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 gap-6 place-items-center">
           {[
             {
               src: "/logos/Laravel.svg",
@@ -269,18 +255,7 @@ const DummyContent = () => {
           ].map((logo, index) => (
             <div
               key={index}
-              className={`
-          ${logo.bg}
-          flex
-          items-center
-          justify-center
-          rounded-2xl
-          p-4
-          transition
-          duration-300
-          hover:scale-110
-          hover:shadow-xl
-        `}
+              className={`${logo.bg} flex items-center justify-center rounded-2xl p-4 transition duration-300  hover:scale-110 hover:shadow-xl`}
             >
               <Tooltip
                 containerClassName="text-neutral-600 dark:text-neutral-400"
@@ -395,16 +370,7 @@ const DummyContent = () => {
           Websites I’ve Built
         </h2>
 
-        <div
-          className="
-      mx-auto
-      max-w-6xl
-      grid
-      gap-8
-      sm:grid-cols-2
-      lg:grid-cols-3
-    "
-        >
+        <div className=" mx-auto max-w-6xl grid gap-8  sm:grid-cols-2 lg:grid-cols-3">
           {/* Website 1 */}
           <WebsiteCard
             name="vue.khaingkyawmin.com"
