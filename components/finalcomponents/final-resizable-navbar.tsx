@@ -357,7 +357,7 @@ const DummyContent = () => {
       {/* experienc section end */}
 
       {/* projects carousel start */}
-      <section>
+      <section id="projects" className="py-20 px-6 md:px-20">
         <h2 className="mb-0 text-center text-3xl font-bold text-amber-50">
           Projects
         </h2>
@@ -365,7 +365,7 @@ const DummyContent = () => {
       </section>
       {/* project carousel end */}
 
-      <section id="websites" className="py-20 px-6 md:px-20">
+      <section id="websites" className="py-10 px-6 md:px-20">
         <h2 className="mb-14 text-center text-3xl font-bold text-amber-50">
           Websites I’ve Built
         </h2>
