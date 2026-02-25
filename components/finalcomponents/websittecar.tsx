@@ -1,16 +1,19 @@
 import React from "react";
 import Image from "next/image";
 import clsx from "clsx";
+
 const WebsiteCard = ({
   name,
   tech,
   url,
   icon,
+  featured = false,
 }: {
   name: string;
   tech: string;
   url: string;
   icon: string;
+  featured?: boolean;
 }) => {
   return (
     <a
@@ -18,37 +21,65 @@ const WebsiteCard = ({
       target="_blank"
       rel="noopener noreferrer"
       className={clsx(
-        "group relative rounded-3xl backdrop-blur-xl p-6",
-        "shadow-xl transition duration-300 hover:-translate-y-2 hover:shadow-2xl"
+        "group relative rounded-3xl backdrop-blur-xl p-6 block",
+        "shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl",
+        featured
+          ? "border border-amber-500/30 bg-gradient-to-br from-amber-950/60 via-orange-950/30 to-yellow-950/20 shadow-[0_0_40px_rgba(245,158,11,0.08)]"
+          : "border border-white/5 bg-white/3"
       )}
     >
-      {/* glow layer */}
+      {/* glow layer on hover */}
       <div
         className={clsx(
           "pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-br",
-          "from-white/20 via-transparent to-transparent",
+          "from-white/10 via-transparent to-transparent",
           "opacity-0 transition duration-300 group-hover:opacity-100"
         )}
       />
 
-      <h3 className="relative text-xl font-semibold mb-2 text-yellow-600">
+      {/* Featured badge */}
+      {featured && (
+        <span className="relative mb-3 inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 px-3 py-1 text-xs font-bold text-white">
+          🎮 Real-Time Game
+        </span>
+      )}
+
+      <h3
+        className={clsx(
+          "relative text-xl font-semibold mb-2",
+          featured ? "text-amber-300" : "text-yellow-600"
+        )}
+      >
         {name}
       </h3>
 
       <p className="relative text-sm text-neutral-400 mb-6">
-        Built with <span className="font-medium text-blue-700">{tech}</span>
+        Built with{" "}
+        <span
+          className={clsx(
+            "font-medium",
+            featured ? "text-amber-400" : "text-blue-700"
+          )}
+        >
+          {tech}
+        </span>
       </p>
 
-      <span className="relative inline-flex items-center text-sm font-medium text-amber-600">
-        Visit Website →{" "}
+      <span
+        className={clsx(
+          "relative inline-flex items-center text-sm font-medium gap-3",
+          featured ? "text-amber-400" : "text-amber-600"
+        )}
+      >
+        Visit Website →
         {icon?.trim() !== "" && (
           <Image
-            className="ms-10"
             src={icon}
-            alt="no image"
-            width={100}
-            height={100}
-          ></Image>
+            alt="site logo"
+            width={80}
+            height={80}
+            className="rounded-xl object-contain"
+          />
         )}
       </span>
     </a>

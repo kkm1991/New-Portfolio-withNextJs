@@ -100,30 +100,62 @@ export default function NavbarDemo() {
 const DummyContent = () => {
   return (
     <div className="container mx-auto p-8 pt-24">
-      <div className="flex justify-center mb-8 px-4">
-        <div>
+      {/* ── Hero ── */}
+      <div className="flex flex-col items-center gap-10 mb-6 px-4 md:flex-row md:justify-center md:gap-16">
+        {/* Profile card */}
+        <div className="flex-shrink-0">
           <CometCard />
         </div>
-      </div>
 
-      <h1 className="mb-4 text-center text-3xl font-bold">
-        <p className="mx-auto max-w-lg py-10 text-left ">
-          <EncryptedText
-            text="Hi, I'm Khaing Kyaw Min. I build the bridge between design and data."
-            encryptedClassName="encrypttextClassname"
-            revealedClassName="encrypttext-related "
-            revealDelayMs={100}
-          />
-        </p>
-      </h1>
-      <p className="mb-10 text-center text-sm text-zinc-500">
-        <EncryptedText
-          text='"Full-Stack Developer & Modern Web Specialist" I build everything from complex Laravel applications to high-converting WordPress websites.'
-          encryptedClassName="encrypttextClassname"
-          revealedClassName="encrypttext-related  "
-          revealDelayMs={30}
-        />
-      </p>
+        {/* Text block */}
+        <div className="flex flex-col gap-4 max-w-xl">
+          {/* Badge */}
+          <span className="inline-flex w-fit items-center gap-2 rounded-full border border-amber-500/30 bg-amber-500/10 px-4 py-1.5 text-xs font-semibold text-amber-400 backdrop-blur-sm">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+            </span>
+            Available for freelance &amp; projects
+          </span>
+
+          <h1 className="text-4xl font-extrabold leading-tight md:text-5xl">
+            <EncryptedText
+              text="Hi, I'm Khaing Kyaw Min."
+              encryptedClassName="encrypttextClassname"
+              revealedClassName="encrypttext-related"
+              revealDelayMs={80}
+            />
+            <span className="block mt-1 bg-gradient-to-r from-amber-400 via-orange-400 to-yellow-300 bg-clip-text text-transparent">
+              I build the bridge between design &amp; data.
+            </span>
+          </h1>
+
+          <p className="text-sm leading-relaxed text-neutral-400 max-w-md">
+            <EncryptedText
+              text='Full-Stack Developer & Modern Web Specialist — I build everything from complex Laravel applications to high-converting WordPress websites and real-time multiplayer games.'
+              encryptedClassName="encrypttextClassname"
+              revealedClassName="encrypttext-related"
+              revealDelayMs={20}
+            />
+          </p>
+
+          {/* CTA row */}
+          <div className="flex flex-wrap gap-3 mt-2">
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 px-6 py-2.5 text-sm font-semibold text-white shadow-lg hover:opacity-90 hover:scale-105 transition-all"
+            >
+              Let&apos;s Talk →
+            </a>
+            <a
+              href="#projects"
+              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-6 py-2.5 text-sm font-medium text-white/70 hover:bg-white/10 hover:text-white transition-all backdrop-blur-sm"
+            >
+              View Projects
+            </a>
+          </div>
+        </div>
+      </div>
 
       <section id="journey" className="py-16 px-6 md:px-20 text-white  ">
         <h2 className="text-3xl font-bold mb-6 text-center">
@@ -173,10 +205,13 @@ const DummyContent = () => {
       </section>
 
       {/* skill section start */}
-      <section id="skills" className="py-16 px-6 md:px-20 text-amber-50">
-        <h2 className="mb-10 text-center text-3xl font-bold">
-          Skills & Technologies
-        </h2>
+      <section id="skills" className="py-16 px-6 md:px-20">
+        <div className="text-center mb-10">
+          <span className="inline-block mb-3 rounded-full border border-white/10 bg-white/5 px-4 py-1 text-xs font-mono text-white/40 tracking-widest uppercase">Tech Stack</span>
+          <h2 className="text-4xl font-extrabold bg-gradient-to-r from-white via-amber-200 to-amber-400 bg-clip-text text-transparent">
+            Skills &amp; Technologies
+          </h2>
+        </div>
 
         <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 gap-6 place-items-center">
           {[
@@ -276,10 +311,13 @@ const DummyContent = () => {
       {/* skill section end */}
 
       {/* experienc section start */}
-      <section id="experience" className="py-20 px-6 md:px-20 text">
-        <h2 className="mb-14 text-center text-3xl font-bold text-amber-50">
-          Experience
-        </h2>
+      <section id="experience" className="py-20 px-6 md:px-20">
+        <div className="text-center mb-14">
+          <span className="inline-block mb-3 rounded-full border border-white/10 bg-white/5 px-4 py-1 text-xs font-mono text-white/40 tracking-widest uppercase">Career</span>
+          <h2 className="text-4xl font-extrabold bg-gradient-to-r from-white via-amber-200 to-amber-400 bg-clip-text text-transparent">
+            Experience
+          </h2>
+        </div>
 
         <div className="relative mx-auto max-w-4xl">
           {/* vertical line */}
@@ -358,20 +396,88 @@ const DummyContent = () => {
 
       {/* projects carousel start */}
       <section id="projects" className="py-20 px-6 md:px-20">
-        <h2 className="mb-0 text-center text-3xl font-bold text-amber-50">
-          Projects
-        </h2>
+        {/* Section heading */}
+        <div className="text-center mb-6">
+          <span className="inline-block mb-3 rounded-full border border-white/10 bg-white/5 px-4 py-1 text-xs font-mono text-white/40 tracking-widest uppercase">Portfolio</span>
+          <h2 className="text-4xl font-extrabold bg-gradient-to-r from-white via-amber-200 to-amber-400 bg-clip-text text-transparent">
+            Projects
+          </h2>
+          <p className="mt-2 text-sm text-neutral-500 max-w-md mx-auto">Under Active Development</p>
+        </div>
+
+        {/* ── MyanmarPoly Featured Spotlight ── */}
+        <div className="mb-8 mx-auto max-w-4xl rounded-3xl border border-amber-500/20 bg-gradient-to-br from-amber-950/60 via-orange-950/40 to-yellow-950/20 backdrop-blur-xl p-6 md:p-8 shadow-[0_0_60px_rgba(245,158,11,0.08)]">
+          <div className="flex flex-col gap-6 md:flex-row md:items-start">
+            {/* Left: main info */}
+            <div className="flex-1">
+              <div className="flex items-center gap-3 mb-3">
+                <span className="rounded-full bg-gradient-to-r from-amber-500 to-orange-500 px-3 py-1 text-xs font-bold text-white">🎮 Featured Project</span>
+                <span className="text-xs font-mono text-amber-400/60">myanmarpoly.online</span>
+              </div>
+              <h3 className="text-2xl font-extrabold text-white mb-1">MyanmarPoly</h3>
+              <p className="text-sm text-neutral-400 mb-4 leading-relaxed">
+                A real-time multiplayer Monopoly-style board game themed around Myanmar cities. Built entirely from scratch with a custom game engine, live socket events, and a secure auth system.
+              </p>
+
+              {/* Tech stack tags */}
+              <div className="flex flex-wrap gap-2 mb-4">
+                {["Next.js 16","Node.js","Socket.io","NeonDB (PostgreSQL)","Firebase","TailwindCSS","JWT Auth","Resend Email"].map((t) => (
+                  <span key={t} className="rounded-full border border-amber-500/20 bg-amber-500/10 px-2.5 py-1 text-xs font-mono text-amber-300">{t}</span>
+                ))}
+              </div>
+
+              <a
+                href="https://myanmarpoly.online"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 px-5 py-2 text-sm font-semibold text-white hover:opacity-90 hover:scale-105 transition-all shadow-lg"
+              >
+                🌐 Visit myanmarpoly.online
+              </a>
+            </div>
+
+            {/* Right: feature grid */}
+            <div className="md:w-64 grid grid-cols-2 gap-3">
+              {[
+                { icon: "⚡", label: "Real-time Multiplayer", sub: "Socket.io rooms" },
+                { icon: "🏦", label: "Property System", sub: "Buy, sell & mortgage" },
+                { icon: "🎴", label: "Card Draws", sub: "Chance & Community" },
+                { icon: "🔨", label: "Live Auctions", sub: "Bid in real time" },
+                { icon: "🔐", label: "Auth & Email", sub: "JWT + Resend" },
+                { icon: "🗺️", label: "Myanmar Board", sub: "Custom city theme" },
+              ].map((f) => (
+                <div key={f.label} className="rounded-2xl border border-white/5 bg-white/3 p-3">
+                  <div className="text-lg mb-1">{f.icon}</div>
+                  <div className="text-xs font-semibold text-white/80 leading-tight">{f.label}</div>
+                  <div className="text-xs text-white/30">{f.sub}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
         <ProjectCarousel />
       </section>
       {/* project carousel end */}
 
       <section id="websites" className="py-10 px-6 md:px-20">
-        <h2 className="mb-14 text-center text-3xl font-bold text-amber-50">
-          Websites I’ve Built
-        </h2>
+        <div className="text-center mb-10">
+          <span className="inline-block mb-3 rounded-full border border-white/10 bg-white/5 px-4 py-1 text-xs font-mono text-white/40 tracking-widest uppercase">Live</span>
+          <h2 className="text-4xl font-extrabold bg-gradient-to-r from-white via-amber-200 to-amber-400 bg-clip-text text-transparent">
+            Websites I&apos;ve Built
+          </h2>
+        </div>
 
-        <div className=" mx-auto max-w-6xl grid gap-8  sm:grid-cols-2 lg:grid-cols-3">
-          {/* Website 1 */}
+        <div className="mx-auto max-w-6xl grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {/* MyanmarPoly — featured */}
+          <WebsiteCard
+            name="myanmarpoly.online"
+            tech="Next.js • Socket.io • Node.js"
+            url="https://myanmarpoly.online"
+            icon="/images/myanmarpoly.png"
+            featured={true}
+          />
+
           <WebsiteCard
             name="vue.khaingkyawmin.com"
             tech="Vue.js"
@@ -379,7 +485,6 @@ const DummyContent = () => {
             icon="/images/kkmlogo.png"
           />
 
-          {/* Website 2 */}
           <WebsiteCard
             name="kokomyint.com"
             tech="WordPress"
@@ -387,15 +492,13 @@ const DummyContent = () => {
             icon="/images/kokomyint.png"
           />
 
-          {/* Website 3 */}
           <WebsiteCard
-            name="ngwehninyee.com is under active development. Stay tuned"
+            name="ngwehninyee.com — under active development"
             tech="WordPress"
             url="https://ngwehninyee.com/"
             icon="/images/nhy.png"
           />
 
-          {/* Website 4 */}
           <WebsiteCard
             name="arrmanshin.com"
             tech="WordPress"
