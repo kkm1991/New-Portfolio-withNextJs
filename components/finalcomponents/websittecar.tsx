@@ -8,12 +8,14 @@ const WebsiteCard = ({
   url,
   icon,
   featured = false,
+  badge = "Featured",
 }: {
   name: string;
   tech: string;
   url: string;
   icon: string;
   featured?: boolean;
+  badge?: string;
 }) => {
   return (
     <a
@@ -21,13 +23,15 @@ const WebsiteCard = ({
       target="_blank"
       rel="noopener noreferrer"
       className={clsx(
-        "group relative rounded-3xl backdrop-blur-xl p-6 block",
-        "shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl",
-        featured
-          ? "border border-amber-500/30 bg-gradient-to-br from-amber-950/60 via-orange-950/30 to-yellow-950/20 shadow-[0_0_40px_rgba(245,158,11,0.08)]"
-          : "border border-white/5 bg-white/3"
+        "group relative rounded-3xl glass-morphism p-6 block",
+        "shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl overflow-hidden",
+        featured && "shadow-[0_0_40px_rgba(245,158,11,0.08)]"
       )}
     >
+      {/* Soft gradient overlay for featured items */}
+      {featured && (
+        <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-orange-500/5 -z-10" />
+      )}
       {/* glow layer on hover */}
       <div
         className={clsx(
@@ -39,8 +43,8 @@ const WebsiteCard = ({
 
       {/* Featured badge */}
       {featured && (
-        <span className="relative mb-3 inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 px-3 py-1 text-xs font-bold text-white">
-          🎮 Real-Time Game
+        <span className="relative mb-3 inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 px-3 py-1 text-[10px] font-bold text-white uppercase tracking-wider">
+          {badge}
         </span>
       )}
 

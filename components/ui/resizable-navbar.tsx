@@ -6,19 +6,21 @@ import {
   AnimatePresence,
   useScroll,
   useMotionValueEvent,
-} from "motion/react";
+} from "framer-motion";
 
 import React, { useRef, useState } from "react";
 
 interface NavbarProps {
   children: React.ReactNode;
   className?: string;
+  suppressHydrationWarning?: boolean;
 }
 
 interface NavBodyProps {
   children: React.ReactNode;
   className?: string;
   visible?: boolean;
+  suppressHydrationWarning?: boolean;
 }
 
 interface NavItemsProps {
@@ -48,7 +50,11 @@ interface MobileNavMenuProps {
   onClose: () => void;
 }
 
-export const Navbar = ({ children, className }: NavbarProps) => {
+export const Navbar = ({
+  children,
+  className,
+  suppressHydrationWarning,
+}: NavbarProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollY } = useScroll({
     target: ref,
@@ -69,6 +75,7 @@ export const Navbar = ({ children, className }: NavbarProps) => {
       ref={ref}
       // IMPORTANT: Change this to class of `fixed` if you want the navbar to be fixed
       className={cn("sticky inset-x-0 top-20 z-40 w-full", className)}
+      suppressHydrationWarning={suppressHydrationWarning}
     >
       {React.Children.map(children, (child) =>
         React.isValidElement(child)
@@ -82,7 +89,12 @@ export const Navbar = ({ children, className }: NavbarProps) => {
   );
 };
 
-export const NavBody = ({ children, className, visible }: NavBodyProps) => {
+export const NavBody = ({
+  children,
+  className,
+  visible,
+  suppressHydrationWarning,
+}: NavBodyProps) => {
   return (
     <motion.div
       animate={{
@@ -99,13 +111,14 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
         damping: 50,
       }}
       style={{
-        minWidth: "800px",
+        minWidth: "950px",
       }}
       className={cn(
         "relative z-[60] mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-full bg-transparent px-4 py-2 lg:flex dark:bg-transparent",
         visible && "bg-white/80 dark:bg-neutral-950/80",
         className
       )}
+      suppressHydrationWarning={suppressHydrationWarning}
     >
       {children}
     </motion.div>

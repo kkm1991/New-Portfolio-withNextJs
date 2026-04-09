@@ -14,6 +14,7 @@ export default function CometCardDemo() {
           transform: "none",
           opacity: 1,
         }}
+        suppressHydrationWarning
       >
         <div className="mx-2 flex-1">
           <div className="relative mt-2 aspect-[3/4] w-full ">

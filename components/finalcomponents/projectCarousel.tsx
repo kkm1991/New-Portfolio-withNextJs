@@ -7,6 +7,19 @@ import clsx from "clsx";
 const projects = [
   {
     id: 1,
+    title: "Nexus Multi-Branch POS & Android App",
+    badge: "🚀 New Feature",
+    badgeColor: "from-indigo-500 to-purple-500",
+    gradient: "from-slate-900/60 via-indigo-900/40 to-slate-900/30",
+    accentColor: "bg-indigo-500",
+    dotColor: "bg-indigo-400",
+    desc: "A comprehensive multi-branch POS and inventory management system with a native Android application. Features real-time stock tracking across multiple locations, automated financial reporting, advanced RBAC, and a mobile POS terminal for on-the-go sales.",
+    tools: "Next.js 16 • Kotlin • Jetpack Compose • Prisma • PostgreSQL (Neon) • NextAuth • Resend SDK",
+    highlights: ["Multi-branch inventory sync", "Android POS Terminal UI", "Inbound email support system", "Role-based permission logic"],
+    url: "https://www.nexuspos.online",
+  },
+  {
+    id: 2,
     title: "MyanmarPoly",
     badge: "🎮 Featured",
     badgeColor: "from-amber-500 to-orange-500",
@@ -15,11 +28,11 @@ const projects = [
     dotColor: "bg-amber-400",
     desc: "A real-time multiplayer Monopoly board game built around Myanmar cities. Players can create/join rooms, buy properties, pay rent, draw Chance & Community Chest cards, auction properties, and trade — all in real time.",
     tools: "Next.js 16 • Node.js • Socket.io • NeonDB (PostgreSQL) • Firebase • TailwindCSS",
-    url: "https://myanmarpoly.com",
+    url: "https://myanmarpoly.online",
     highlights: ["Real-time multiplayer via Socket.io", "JWT auth + email verification", "Live auction & trading system", "Myanmar-themed board & properties"],
   },
   {
-    id: 2,
+    id: 3,
     title: "Realtime Voting System",
     badge: "⚡ Live",
     badgeColor: "from-blue-500 to-cyan-500",
@@ -32,7 +45,7 @@ const projects = [
     url: null,
   },
   {
-    id: 3,
+    id: 4,
     title: "Salary Payment System",
     badge: "✅ Production",
     badgeColor: "from-green-500 to-emerald-500",
@@ -45,7 +58,7 @@ const projects = [
     url: null,
   },
   {
-    id: 4,
+    id: 5,
     title: "Attendance & Timesheet System",
     badge: "🏢 Enterprise",
     badgeColor: "from-purple-500 to-violet-500",
@@ -58,7 +71,7 @@ const projects = [
     url: null,
   },
   {
-    id: 5,
+    id: 6,
     title: "Sales Management System",
     badge: "🖥️ Desktop",
     badgeColor: "from-rose-500 to-pink-500",
@@ -116,7 +129,7 @@ export default function ProjectCarousel() {
     <div className="w-full">
       {/* 3D Carousel */}
       <div
-        className="relative flex h-[680px] w-full items-center justify-center overflow-hidden"
+        className="relative flex h-[700px] w-full items-center justify-center overflow-hidden"
         style={{ perspective: "1400px" }}
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
@@ -150,7 +163,7 @@ export default function ProjectCarousel() {
                 opacity: { duration: 0.6 },
               }}
               className={clsx(
-                "absolute w-[300px] h-[560px] select-none rounded-3xl p-0 overflow-hidden",
+                "absolute w-[300px] h-[600px] select-none rounded-3xl p-0 overflow-hidden",
                 "border border-white/10",
                 "shadow-[0_25px_60px_rgba(0,0,0,0.5)]",
                 isActive ? "cursor-grab z-20" : "cursor-default"
@@ -227,7 +240,7 @@ export default function ProjectCarousel() {
                       "bg-gradient-to-r from-amber-500 to-orange-500 hover:opacity-90 hover:scale-105 shadow-lg"
                     )}
                   >
-                    🌐 Visit myanmarpoly.com
+                    🌐 Visit myanmarpoly.online
                   </a>
                 ) : (
                   <div className={clsx(
