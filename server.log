@@ -1,0 +1,18 @@
+
+> portfolio@0.1.0 dev D:\React js  Next js classes\Next\portfolio
+> next dev -H 0.0.0.0
+
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+   ▲ Next.js 16.0.10 (Turbopack)
+   - Local:         http://localhost:3000
+   - Network:       http://0.0.0.0:3000
+
+ ✓ Starting...
+ ✓ Ready in 1073ms
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+ ○ Compiling / ...
+ GET / 200 in 5.3s (compile: 4.9s, render: 319ms)
+ GET / 200 in 135ms (compile: 11ms, render: 124ms)
+ ✓ Compiled in 780ms
+ GET / 200 in 372ms (compile: 123ms, render: 249ms)
+ ✓ Compiled in 516ms
