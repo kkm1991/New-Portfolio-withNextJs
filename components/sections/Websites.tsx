@@ -50,6 +50,14 @@ export default function Websites() {
           />
 
           <WebsiteCard
+            name="mm-shops.vercel.app"
+            tech="Next.js • Prisma • JWT • GCS"
+            url="https://mm-shops.vercel.app/"
+            featured={true}
+            badge="🛒 E-Commerce"
+          />
+
+          <WebsiteCard
             name="vue.khaingkyawmin.com"
             tech="Vue.js"
             url="https://vue.khaingkyawmin.com"

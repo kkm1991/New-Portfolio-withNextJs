@@ -20,6 +20,19 @@ const projects = [
   },
   {
     id: 2,
+    title: "MMShopping — Multi-Vendor E-Commerce",
+    badge: "🛒 Full-Stack",
+    badgeColor: "from-violet-500 to-fuchsia-500",
+    gradient: "from-violet-900/60 via-fuchsia-900/40 to-purple-900/30",
+    accentColor: "bg-violet-500",
+    dotColor: "bg-violet-400",
+    desc: "A multi-vendor e-commerce platform with buyer shopping flows, seller dashboards, and admin management. Features custom JWT auth with email OTP verification, RBAC, cart & checkout, order tracking timeline, Google Cloud Storage uploads, and Next.js 16 use cache.",
+    tools: "Next.js 16 • React 19 • Prisma 6 • PostgreSQL (Neon) • JWT (jose) • Google Cloud Storage • Zod",
+    highlights: ["Custom JWT auth with email OTP", "3-role RBAC (Admin/Seller/Buyer)", "Order tracking timeline", "Tag-based caching with use cache"],
+    url: "https://mm-shops.vercel.app/",
+  },
+  {
+    id: 3,
     title: "MyanmarPoly",
     badge: "🎮 Featured",
     badgeColor: "from-amber-500 to-orange-500",
@@ -32,7 +45,7 @@ const projects = [
     highlights: ["Real-time multiplayer via Socket.io", "JWT auth + email verification", "Live auction & trading system", "Myanmar-themed board & properties"],
   },
   {
-    id: 3,
+    id: 4,
     title: "Realtime Voting System",
     badge: "⚡ Live",
     badgeColor: "from-blue-500 to-cyan-500",
@@ -45,7 +58,7 @@ const projects = [
     url: null,
   },
   {
-    id: 4,
+    id: 5,
     title: "Salary Payment System",
     badge: "✅ Production",
     badgeColor: "from-green-500 to-emerald-500",
@@ -58,7 +71,7 @@ const projects = [
     url: null,
   },
   {
-    id: 5,
+    id: 6,
     title: "Attendance & Timesheet System",
     badge: "🏢 Enterprise",
     badgeColor: "from-purple-500 to-violet-500",
@@ -71,7 +84,7 @@ const projects = [
     url: null,
   },
   {
-    id: 6,
+    id: 7,
     title: "Sales Management System",
     badge: "🖥️ Desktop",
     badgeColor: "from-rose-500 to-pink-500",
@@ -129,7 +142,7 @@ export default function ProjectCarousel() {
     <div className="w-full">
       {/* 3D Carousel */}
       <div
-        className="relative flex h-[700px] w-full items-center justify-center overflow-hidden"
+        className="relative flex h-[750px] w-full items-center justify-center overflow-hidden"
         style={{ perspective: "1400px" }}
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
@@ -163,7 +176,7 @@ export default function ProjectCarousel() {
                 opacity: { duration: 0.6 },
               }}
               className={clsx(
-                "absolute w-[300px] h-[600px] select-none rounded-3xl p-0 overflow-hidden",
+                "absolute w-[300px] h-[650px] select-none rounded-3xl p-0 overflow-hidden",
                 "border border-white/10",
                 "shadow-[0_25px_60px_rgba(0,0,0,0.5)]",
                 isActive ? "cursor-grab z-20" : "cursor-default"
@@ -240,7 +253,7 @@ export default function ProjectCarousel() {
                       "bg-gradient-to-r from-amber-500 to-orange-500 hover:opacity-90 hover:scale-105 shadow-lg"
                     )}
                   >
-                    🌐 Visit myanmarpoly.online
+                    🌐 Visit {new URL(project.url).hostname}
                   </a>
                 ) : (
                   <div className={clsx(

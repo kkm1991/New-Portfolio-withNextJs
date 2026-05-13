@@ -13,7 +13,7 @@ const WebsiteCard = ({
   name: string;
   tech: string;
   url: string;
-  icon: string;
+  icon?: string;
   featured?: boolean;
   badge?: string;
 }) => {
@@ -76,7 +76,7 @@ const WebsiteCard = ({
         )}
       >
         Visit Website →
-        {icon?.trim() !== "" && (
+        {icon && icon.trim() !== "" && (
           <Image
             src={icon}
             alt="site logo"

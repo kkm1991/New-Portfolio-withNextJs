@@ -36,6 +36,22 @@ const SPOTLIGHTS = [
       { icon: "📱", label: "Android POS App", sub: "Native Terminal UI" },
       { icon: "📦", label: "Inventory Logic", sub: "Stock movements" },
     ]
+  },
+  {
+    title: "MMShopping — Multi-Vendor E-Commerce",
+    tagline: "mm-shops.vercel.app",
+    badge: "🛒 Full-Stack Platform",
+    desc: "A multi-vendor e-commerce platform with custom JWT authentication, email OTP verification, role-based access control, seller dashboards, order tracking, and Google Cloud Storage image uploads.",
+    tech: ["Next.js 16", "React 19", "Prisma 6", "PostgreSQL", "JWT", "GCS"],
+    url: "https://mm-shops.vercel.app/",
+    gradient: "from-violet-950/60 via-fuchsia-950/40 to-purple-950/20",
+    border: "border-violet-500/20",
+    accent: "violet",
+    features: [
+      { icon: "🔐", label: "Custom JWT Auth", sub: "Email OTP verify" },
+      { icon: "🏪", label: "Multi-Vendor", sub: "Seller & Buyer flows" },
+      { icon: "📦", label: "Order Tracking", sub: "Full status timeline" },
+    ]
   }
 ];
 
