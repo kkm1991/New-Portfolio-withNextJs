@@ -41,12 +41,16 @@ const WebsiteCard = ({
         )}
       />
 
-      {/* Featured badge */}
-      {featured && (
+      {/* Badge */}
+      {featured ? (
         <span className="relative mb-3 inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 px-3 py-1 text-[10px] font-bold text-white uppercase tracking-wider">
           {badge}
         </span>
-      )}
+      ) : badge !== "Featured" ? (
+        <span className="relative mb-3 inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-yellow-500/20 to-orange-500/20 border border-yellow-500/30 px-3 py-1 text-[10px] font-bold text-yellow-400 uppercase tracking-wider">
+          {badge}
+        </span>
+      ) : null}
 
       <h3
         className={clsx(

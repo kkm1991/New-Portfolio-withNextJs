@@ -53,6 +53,7 @@ export default function Websites() {
             name="mm-shops.vercel.app"
             tech="Next.js • Prisma • JWT • GCS"
             url="https://mm-shops.vercel.app/"
+            icon="/logos/mmshopping.png"
             featured={true}
             badge="🛒 E-Commerce"
           />
@@ -76,6 +77,7 @@ export default function Websites() {
             tech="WordPress • E-Commerce"
             url="https://ngwehninyee.com/"
             icon="/images/nhy.png"
+            badge="🔧 Under Development"
           />
 
           <WebsiteCard

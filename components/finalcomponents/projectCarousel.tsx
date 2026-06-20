@@ -2,6 +2,7 @@
 
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import clsx from "clsx";
 
 const projects = [
@@ -26,6 +27,7 @@ const projects = [
     gradient: "from-violet-900/60 via-fuchsia-900/40 to-purple-900/30",
     accentColor: "bg-violet-500",
     dotColor: "bg-violet-400",
+    image: "/logos/mmshopping.png",
     desc: "A multi-vendor e-commerce platform with buyer shopping flows, seller dashboards, and admin management. Features custom JWT auth with email OTP verification, RBAC, cart & checkout, order tracking timeline, Google Cloud Storage uploads, and Next.js 16 use cache.",
     tools: "Next.js 16 • React 19 • Prisma 6 • PostgreSQL (Neon) • JWT (jose) • Google Cloud Storage • Zod",
     highlights: ["Custom JWT auth with email OTP", "3-role RBAC (Admin/Seller/Buyer)", "Order tracking timeline", "Tag-based caching with use cache"],
@@ -211,6 +213,20 @@ export default function ProjectCarousel() {
                     {project.badge}
                   </span>
                 </div>
+
+                {/* Project Logo */}
+                {/* {"image" in project && project.image && (
+                  <div className="mb-3 flex justify-center">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      width={64}
+                      height={64}
+                      className="rounded-xl object-contain"
+                      style={{ filter: "drop-shadow(0 0 12px rgba(139,92,246,0.4))" }}
+                    />
+                  </div>
+                )} */}
 
                 {/* Title */}
                 <motion.h3
