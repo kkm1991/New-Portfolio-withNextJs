@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import {
   animate,
   motion,
@@ -107,11 +107,12 @@ const TRANSITION_CONFIG = {
 };
 
 const SWIPE_THRESHOLD = 50;
+const MOBILE_SWIPE_THRESHOLD = 35;
 const VELOCITY_THRESHOLD = 0.35;
 
-function getSwipeDirection(deltaX: number, velocity: number) {
-  if (deltaX <= -SWIPE_THRESHOLD) return 1;
-  if (deltaX >= SWIPE_THRESHOLD) return -1;
+function getSwipeDirection(deltaX: number, velocity: number, swipeThreshold: number) {
+  if (deltaX <= -swipeThreshold) return 1;
+  if (deltaX >= swipeThreshold) return -1;
   if (velocity <= -VELOCITY_THRESHOLD) return 1;
   if (velocity >= VELOCITY_THRESHOLD) return -1;
   return 0;
@@ -156,6 +157,7 @@ interface ProjectCardProps {
   activeVirtualIndex: number;
   progress: MotionValue<number>;
   isReal: boolean;
+  isDragging: boolean;
 }
 
 function ProjectCard({
@@ -164,8 +166,10 @@ function ProjectCard({
   activeVirtualIndex,
   progress,
   isReal,
+  isDragging,
 }: ProjectCardProps) {
   const [nearestSlot, setNearestSlot] = useState(activeVirtualIndex);
+  const nearestSlotRef = useRef(activeVirtualIndex);
   const distance = useTransform(progress, (value) => virtualIndex - value);
   const x = useTransform(distance, (value) => value * CARD_STEP);
   const scale = useTransform(distance, (value) => getCardVisual(value).scale);
@@ -176,7 +180,9 @@ function ProjectCard({
 
   useMotionValueEvent(progress, "change", (value) => {
     const nextSlot = Math.round(value);
-    setNearestSlot((currentSlot) => currentSlot === nextSlot ? currentSlot : nextSlot);
+    if (nearestSlotRef.current === nextSlot) return;
+    nearestSlotRef.current = nextSlot;
+    setNearestSlot(nextSlot);
   });
 
   return (
@@ -186,7 +192,7 @@ function ProjectCard({
         top: "50%",
         left: "50%",
         transformOrigin: "center center",
-        willChange: "transform, opacity",
+        willChange: isDragging ? "transform, opacity" : "auto",
         pointerEvents: isNearest && isReal ? "auto" : "none",
         x,
         rotateY,
@@ -227,6 +233,17 @@ export default function WebsiteCarousel() {
   const velocityRef = useRef(0);
   const hasDraggedRef = useRef(false);
   const isHorizontalDragRef = useRef(false);
+  const isMobilePointerRef = useRef(false);
+  const pendingDeltaXRef = useRef(0);
+  const animationFrameRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (animationFrameRef.current !== null) {
+        window.cancelAnimationFrame(animationFrameRef.current);
+      }
+    };
+  }, []);
 
   const normalizeIndex = useCallback((index: number) => {
     const mod = index % NUM_PROJECTS;
@@ -275,6 +292,7 @@ export default function WebsiteCarousel() {
     velocityRef.current = 0;
     hasDraggedRef.current = false;
     isHorizontalDragRef.current = false;
+    isMobilePointerRef.current = event.pointerType === "touch" || window.matchMedia("(max-width: 767px)").matches;
     setIsDragging(true);
   };
 
@@ -302,7 +320,17 @@ export default function WebsiteCarousel() {
     lastPointerXRef.current = event.clientX;
     lastPointerTimeRef.current = event.timeStamp;
     const dragSteps = -deltaX / CARD_STEP;
-    progress.set(dragStartProgressRef.current + dragSteps);
+    if (isMobilePointerRef.current) {
+      pendingDeltaXRef.current = deltaX;
+      if (animationFrameRef.current === null) {
+        animationFrameRef.current = window.requestAnimationFrame(() => {
+          animationFrameRef.current = null;
+          progress.set(dragStartProgressRef.current - pendingDeltaXRef.current / CARD_STEP);
+        });
+      }
+    } else {
+      progress.set(dragStartProgressRef.current + dragSteps);
+    }
 
     if (hasDraggedRef.current) event.preventDefault();
   };
@@ -314,7 +342,17 @@ export default function WebsiteCarousel() {
     const deltaX = event.clientX - dragStartXRef.current;
     const velocity = cancelled ? 0 : velocityRef.current;
     const releasedProgress = dragStartProgressRef.current - deltaX / CARD_STEP;
-    const direction = getSwipeDirection(deltaX, velocity);
+    const swipeThreshold = isMobilePointerRef.current ? MOBILE_SWIPE_THRESHOLD : SWIPE_THRESHOLD;
+
+    if (isMobilePointerRef.current) {
+      if (animationFrameRef.current !== null) {
+        window.cancelAnimationFrame(animationFrameRef.current);
+        animationFrameRef.current = null;
+      }
+      progress.set(releasedProgress);
+    }
+
+    const direction = getSwipeDirection(deltaX, velocity, swipeThreshold);
     const target = direction !== 0
       ? dragStartProgressRef.current + direction
       : Math.round(releasedProgress);
@@ -451,6 +489,7 @@ export default function WebsiteCarousel() {
             activeVirtualIndex={activeVirtualIndex}
             progress={progress}
             isReal={card.isReal}
+            isDragging={isDragging}
           />
         ))}
       </div>

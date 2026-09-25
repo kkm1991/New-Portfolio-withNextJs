@@ -13,6 +13,43 @@ import { useState } from "react";
 import Themetoggle from "@/components/finalcomponents/Themetoggle";
 import { useLanguage } from "@/context/LanguageContext";
 
+type LanguageSwitchProps = {
+  language: "en" | "mm";
+  mobile?: boolean;
+  onToggle: () => void;
+};
+
+function LanguageSwitch({ language, mobile = false, onToggle }: LanguageSwitchProps) {
+  const isMyanmar = language === "mm";
+
+  return (
+    <button
+      type="button"
+      className={`language-switch${mobile ? " language-switch--mobile" : ""}`}
+      data-language={language}
+      aria-label="Switch language"
+      aria-pressed={isMyanmar}
+      onClick={onToggle}
+    >
+      <span className="language-switch__track" aria-hidden="true">
+        <span className="language-switch__indicator" />
+        <span className="language-switch__content">
+          <span className="language-switch__option language-switch__option--en">
+            <span className="language-switch__code">EN</span>
+          </span>
+          <span className="language-switch__option language-switch__option--mm">
+            <span className="language-switch__code language-switch__code--mm language-switch__code--mm-full">မြန်မာ</span>
+            <span className="language-switch__code language-switch__code--mm language-switch__code--mm-short">MM</span>
+          </span>
+        </span>
+      </span>
+      <span className="sr-only">
+        {isMyanmar ? "Myanmar selected" : "English selected"}
+      </span>
+    </button>
+  );
+}
+
 export default function NavbarDemo() {
   const { language, setLanguage, t } = useLanguage();
   
@@ -49,14 +86,10 @@ export default function NavbarDemo() {
           <NavbarLogo />
           <NavItems items={navItems} />
           <div className="flex items-center gap-2 z-50">
-            {/* Language Switcher */}
-            <button
-              onClick={() => setLanguage(language === "en" ? "mm" : "en")}
-              className="group relative flex items-center justify-center p-2 rounded-full border border-white/10 bg-white/5 hover:bg-amber-500 hover:text-white transition-all text-xs font-bold"
-              title={language === "en" ? "Switch to Myanmar" : "English သို့ ပြောင်းရန်"}
-            >
-              {language === "en" ? "MM" : "EN"}
-            </button>
+            <LanguageSwitch
+              language={language}
+              onToggle={() => setLanguage(language === "en" ? "mm" : "en")}
+            />
             <Themetoggle />
           </div>
         </NavBody>
@@ -86,16 +119,15 @@ export default function NavbarDemo() {
               </a>
             ))}
             <div className="flex w-full flex-col gap-4 pt-4 border-t border-white/10">
-              <button
-                onClick={() => {
-                   setLanguage(language === "en" ? "mm" : "en");
-                   setIsMobileMenuOpen(false);
-                }}
-                className="flex items-center justify-center p-3 rounded-2xl border border-white/10 bg-white/5 hover:bg-amber-500 hover:text-white transition-all text-xs font-bold"
-              >
-                {language === "en" ? "Switch to Myanmar (MM)" : "English (EN) သို့ ပြောင်းရန်"}
-              </button>
-              <div className="flex justify-center">
+              <div className="flex items-center justify-center gap-3">
+                <LanguageSwitch
+                  language={language}
+                  mobile
+                  onToggle={() => {
+                    setLanguage(language === "en" ? "mm" : "en");
+                    setIsMobileMenuOpen(false);
+                  }}
+                />
                 <Themetoggle />
               </div>
             </div>
