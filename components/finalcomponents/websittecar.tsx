@@ -2,6 +2,16 @@ import React from "react";
 import Image from "next/image";
 import clsx from "clsx";
 
+interface WebsiteCardProps {
+  name: string;
+  tech: string;
+  url: string;
+  icon?: string;
+  featured?: boolean;
+  badge?: string;
+  onVisitClick?: (url: string) => void;
+}
+
 const WebsiteCard = ({
   name,
   tech,
@@ -9,24 +19,36 @@ const WebsiteCard = ({
   icon,
   featured = false,
   badge = "Featured",
-}: {
-  name: string;
-  tech: string;
-  url: string;
-  icon?: string;
-  featured?: boolean;
-  badge?: string;
-}) => {
+  onVisitClick,
+}: WebsiteCardProps) => {
+  const handleVisitClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (onVisitClick) {
+      onVisitClick(url);
+    } else {
+      window.open(url, "_blank", "noopener,noreferrer");
+    }
+  };
+
   return (
-    <a
-      href={url}
-      target="_blank"
-      rel="noopener noreferrer"
+    <div
       className={clsx(
-        "group relative rounded-3xl glass-morphism p-6 block",
-        "shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl overflow-hidden",
-        featured && "shadow-[0_0_40px_rgba(245,158,11,0.08)]"
+        "relative rounded-3xl p-6 block",
+        "shadow-xl transition-all duration-300 overflow-hidden",
+        "bg-slate-800/40 dark:bg-slate-800/45",
+        "backdrop-blur-xl",
+        "border border-white/10 dark:border-white/15",
+        featured && "shadow-[0_0_40px_rgba(245,158,11,0.15)]",
+        featured && "border-amber-500/20",
       )}
+      style={{
+        width: "100%",
+        height: "100%",
+        minHeight: "345px",
+        display: "flex",
+        flexDirection: "column",
+      }}
     >
       {/* Soft gradient overlay for featured items */}
       {featured && (
@@ -37,7 +59,7 @@ const WebsiteCard = ({
         className={clsx(
           "pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-br",
           "from-white/10 via-transparent to-transparent",
-          "opacity-0 transition duration-300 group-hover:opacity-100"
+          "opacity-0 transition duration-300"
         )}
       />
 
@@ -61,7 +83,7 @@ const WebsiteCard = ({
         {name}
       </h3>
 
-      <p className="relative text-sm text-neutral-400 mb-6">
+      <p className="relative text-sm text-neutral-400 mb-6 flex-1">
         Built with{" "}
         <span
           className={clsx(
@@ -73,11 +95,15 @@ const WebsiteCard = ({
         </span>
       </p>
 
-      <span
+      <button
+        onClick={handleVisitClick}
         className={clsx(
           "relative inline-flex items-center text-sm font-medium gap-3",
+          "hover:opacity-80 transition-opacity",
+          "focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
           featured ? "text-amber-400" : "text-amber-600"
         )}
+        style={{ alignSelf: "flex-start" }}
       >
         Visit Website →
         {icon && icon.trim() !== "" && (
@@ -86,11 +112,12 @@ const WebsiteCard = ({
             alt="site logo"
             width={80}
             height={80}
-            className="rounded-xl object-contain"
+            draggable={false}
+            className="pointer-events-none rounded-xl object-contain select-none"
           />
         )}
-      </span>
-    </a>
+      </button>
+    </div>
   );
 };
 

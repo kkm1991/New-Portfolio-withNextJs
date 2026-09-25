@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import WebsiteCard from "@/components/finalcomponents/websittecar";
+import WebsiteCarousel from "@/components/finalcomponents/website-carousel";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function Websites() {
@@ -24,68 +24,13 @@ export default function Websites() {
           </h2>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="mx-auto max-w-6xl grid gap-8 sm:grid-cols-2 lg:grid-cols-3"
         >
-          <WebsiteCard
-            name="nexuspos.online & Android App"
-            tech="Next.js • Kotlin • Prisma • Tailwind"
-            url="https://www.nexuspos.online"
-            icon="/logos/nexus.png"
-            featured={true}
-            badge="🚀 Business SaaS"
-          />
-
-          <WebsiteCard
-            name="myanmarpoly.online"
-            tech="Next.js • Socket.io • Node.js"
-            url="https://myanmarpoly.online"
-            icon="/images/myanmarpoly.png"
-            featured={true}
-            badge="🎮 Real-Time Game"
-          />
-
-          <WebsiteCard
-            name="mm-shops.vercel.app"
-            tech="Next.js • Prisma • JWT • GCS"
-            url="https://mm-shops.vercel.app/"
-            icon="/logos/mmshopping.png"
-            featured={true}
-            badge="🛒 E-Commerce"
-          />
-
-          <WebsiteCard
-            name="vue.khaingkyawmin.com"
-            tech="Vue.js"
-            url="https://vue.khaingkyawmin.com"
-            icon="/images/kkmlogo.png"
-          />
-
-          <WebsiteCard
-            name="kokomyint.com"
-            tech="WordPress"
-            url="https://kokomyint.com"
-            icon="/images/kokomyint.png"
-          />
-
-          <WebsiteCard
-            name="ngwehninyee.com"
-            tech="WordPress • E-Commerce"
-            url="https://ngwehninyee.com/"
-            icon="/images/nhy.png"
-            badge="🔧 Under Development"
-          />
-
-          <WebsiteCard
-            name="arrmanshin.com"
-            tech="WordPress"
-            url="https://arrmanshin.com"
-            icon="/images/arrmanshin.png"
-          />
+          <WebsiteCarousel />
         </motion.div>
       </div>
     </section>
