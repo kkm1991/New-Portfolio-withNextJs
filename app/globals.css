@@ -20,7 +20,7 @@
    THEME CONTROL (GLOBAL)
 ================================ */
 html.dark {
-  --background: #030303;
+  --background: #070707;
   --foreground: #ededed;
 }
 
@@ -72,7 +72,11 @@ body {
 
 /* Dark / Light background color */
 html.dark .bg-container {
-  background-color: #030303;
+  background:
+    radial-gradient(ellipse at 20% 15%, rgba(215,181,109,0.07) 0%, transparent 45%),
+    radial-gradient(ellipse at 75% 60%, rgba(100,130,180,0.05) 0%, transparent 40%),
+    radial-gradient(ellipse at 50% 90%, rgba(215,181,109,0.04) 0%, transparent 35%),
+    #070707;
   color: #ededed;
 }
 
@@ -94,6 +98,7 @@ html.light .bg-container {
 /* Blend modes */
 html.dark .blob {
   mix-blend-mode: screen;
+  opacity: 0;
 }
 
 html.light .blob {
@@ -105,31 +110,11 @@ html.light .blob {
 /* ===============================
    BLOBS (DARK THEME)
 ================================ */
-html.dark .blob-1 {
-  width: 800px;
-  height: 800px;
-  background: radial-gradient(circle, #4f46e5 0%, transparent 100%);
-  top: -10%;
-  left: -10%;
-  animation: float-slow 25s infinite alternate ease-in-out;
-}
-
-html.dark .blob-2 {
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, #06b6d4 0%, transparent 100%);
-  bottom: 10%;
-  right: 10%;
-  animation: float-medium 30s infinite alternate-reverse ease-in-out;
-}
-
+/* Dark blobs are replaced by the DarkBackgroundEffects component */
+html.dark .blob-1,
+html.dark .blob-2,
 html.dark .blob-3 {
-  width: 900px;
-  height: 800px;
-  background: radial-gradient(circle, #7c3aed 0%, transparent 100%);
-  top: 40%;
-  left: 30%;
-  animation: float-fast 20s infinite alternate ease-in-out;
+  display: none;
 }
 
 /* ===============================
@@ -197,11 +182,12 @@ html.light .blob-3 {
 ================================ */
 
 /* Grain */
+/* Dark grain — very subtle noise */
 html.dark .bg-container::before {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
   pointer-events: none;
   z-index: 1;
 }
@@ -215,19 +201,19 @@ html.light .bg-container::before {
   z-index: 1;
 }
 
-/* Grid */
+/* Dark grid — futuristic subtle grid with radial fade */
 html.dark .bg-container::after {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: linear-gradient(
-      rgba(255, 255, 255, 0.02) 1px,
-      transparent 1px
-    ),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-  background-size: 50px 50px;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 70px 70px;
   pointer-events: none;
   z-index: 2;
+  -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 20%, transparent 75%);
+  mask-image: radial-gradient(ellipse at 50% 50%, black 20%, transparent 75%);
 }
 
 html.light .bg-container::after {
@@ -354,7 +340,7 @@ html.light .social-btn {
 
 /* Phone icon */
 html.dark #phone svg {
-  fill: #ffffff;
+  fill: #e8eac2;
 }
 
 html.light #phone svg {
@@ -363,7 +349,7 @@ html.light #phone svg {
 
 /* GitHub icon */
 html.dark #github {
-  fill: #ffffff;
+  fill: #e8eac2;
 }
 
 html.light #github {
@@ -455,7 +441,7 @@ html.light #github {
   bottom: 0;
   border-radius: 50%;
   overflow: hidden;
-  border: 4px solid #ffffff;
+  border: 4px solid #e8eac2;
   box-shadow: inset 0 6px 12px rgba(0, 0, 0, 0.3);
   background: linear-gradient(180deg, #5ab5e6 0%, #aee0ff 100%);
   z-index: 1;
@@ -1037,3 +1023,193 @@ html.light .language-switch__track::before {
     transition-duration: 0.01ms;
   }
 }
+
+/* ===============================
+   DARK MODE – FUTURISTIC AMBIENT ORBS
+================================ */
+
+.dark-background-effects {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Individual orb base */
+.dark-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* Gold orb – warm accent */
+.dark-orb-gold {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(215,181,109,0.12) 0%, rgba(215,181,109,0.04) 40%, transparent 70%);
+  filter: blur(120px);
+  top: 8%;
+  left: 12%;
+  animation: floatOrb1 18s ease-in-out infinite alternate;
+}
+
+/* Steel/blue orb – cool secondary */
+.dark-orb-steel {
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, rgba(100,130,180,0.10) 0%, rgba(100,130,180,0.03) 40%, transparent 70%);
+  filter: blur(130px);
+  bottom: 10%;
+  right: 8%;
+  animation: floatOrb2 22s ease-in-out infinite alternate;
+}
+
+/* Neutral orb – extremely subtle third glow */
+.dark-orb-neutral {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 60%);
+  filter: blur(100px);
+  top: 55%;
+  left: 45%;
+  animation: floatOrb3 25s ease-in-out infinite alternate;
+}
+
+/* Orb floating animations – very subtle movement */
+@keyframes floatOrb1 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(30px, 20px, 0) scale(1.05);
+  }
+}
+
+@keyframes floatOrb2 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(-25px, -15px, 0) scale(1.08);
+  }
+}
+
+@keyframes floatOrb3 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(15px, -25px, 0) scale(0.95);
+  }
+}
+
+/* ===============================
+   REDUCED MOTION – DARK BG EFFECTS
+================================ */
+@media (prefers-reduced-motion: reduce) {
+  .dark-orb-gold,
+  .dark-orb-steel,
+  .dark-orb-neutral {
+    animation: none !important;
+  }
+  .dark-background-effects {
+    /* Disable parallax via a CSS flag the JS can read */
+    --parallax-disabled: 1;
+  }
+}
+
+/* ===============================
+   MOBILE – DARK BG EFFECTS
+================================ */
+@media (max-width: 768px) {
+  .dark-orb-gold {
+    width: 350px;
+    height: 350px;
+    filter: blur(90px);
+    opacity: 0.8;
+  }
+  .dark-orb-steel {
+    width: 300px;
+    height: 300px;
+    filter: blur(100px);
+    opacity: 0.7;
+  }
+  .dark-orb-neutral {
+    width: 250px;
+    height: 250px;
+    filter: blur(80px);
+    opacity: 0.6;
+  }
+}
+html.dark .comet-card-name {
+  color: #c8cc73;
+}
+
+html.light .comet-card-name {
+  color: #000000;
+}
+/* ===============================
+   OVERFLOW PROTECTION
+================================ */
+html, body {
+  overflow-x: hidden;
+}
+
+/* ===============================
+   DARK MODE – GOLD GLOW HOVER ON CARDS
+=============================== */
+
+/*
+ * Apply .dark-gold-glow-card to any card that should get
+ * a subtle inner gold radial glow on hover (dark mode only).
+ * The card MUST have position: relative and overflow: hidden.
+ */
+.dark-gold-glow-card {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Project Carousel card dimension lock – preserves original 300×650 layout
+   Scoped to the carousel's motion.div cards to prevent any CSS/utility overrides */
+.project-carousel-card,
+.motion-div.project-carousel-card,
+div[class*="w-\[300px\]"][class*="h-\[650px\]"].dark-gold-glow-card {
+  width: 300px !important;
+  height: 650px !important;
+  min-width: 300px !important;
+  max-width: 300px !important;
+  min-height: 650px !important;
+  max-height: 650px !important;
+  flex-shrink: 0 !important;
+  flex-grow: 0 !important;
+  flex-basis: 300px !important;
+}
+
+.dark-gold-glow-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(
+    200px circle at var(--glow-x, 50%) var(--glow-y, 50%),
+    rgba(215, 181, 109, 0.22) 0%,
+    rgba(215, 181, 109, 0.08) 30%,
+    transparent 70%
+  );
+  transition: opacity 0.4s ease;
+}
+
+html.dark .dark-gold-glow-card:hover::after {
+  opacity: 1;
+}
+
+/* Light mode – never show the gold glow */
+html.light .dark-gold-glow-card::after {
+  opacity: 0 !important;
+}
+

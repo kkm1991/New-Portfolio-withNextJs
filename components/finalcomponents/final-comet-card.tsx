@@ -27,10 +27,10 @@ export default function CometCardDemo() {
             />
           </div>
         </div>
-        <div className="mt-2 flex flex-shrink-0 items-center justify-between p-4 font-mono text-white ">
-          <div className="text-xs">Khaing Kyaw Min</div>
-          <div className="text-xs text-gray-50 opacity-50">1991</div>
-        </div>
+        <div className="mt-2 flex flex-shrink-0 items-center justify-between p-4 font-mono">
+  <div className="comet-card-name text-xs">Khaing Kyaw Min</div>
+  <div className="comet-card-name text-xs">1991</div>
+</div>
       </button>
     </CometCard>
   );

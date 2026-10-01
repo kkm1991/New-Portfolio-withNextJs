@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
+import Tilt3DCard from "@/components/ui/Tilt3DCard";
 
 export default function About() {
   const { t } = useLanguage();
@@ -36,7 +37,8 @@ export default function About() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative"
           >
-            <div className="glass-morphism relative z-10 p-8 md:p-12 rounded-[40px] shadow-[0_20px_50px_rgba(0,0,0,0.1)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.3)]">
+            <Tilt3DCard>
+            <div className="glass-morphism dark-gold-glow-card relative z-10 p-8 md:p-12 rounded-[40px] shadow-[0_20px_50px_rgba(0,0,0,0.1)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.3)]">
               <div className="space-y-6 text-lg leading-relaxed text-neutral-700 dark:text-neutral-300 font-medium">
                 <motion.p
                   initial={{ opacity: 0 }}
@@ -80,6 +82,7 @@ export default function About() {
               <div className="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-gradient-to-br from-amber-500 to-orange-500 rounded-full blur-2xl opacity-20 -z-10" />
               <div className="absolute bottom-0 left-0 -mb-4 -ml-4 w-32 h-32 bg-indigo-500 rounded-full blur-2xl opacity-10 -z-10" />
             </div>
+            </Tilt3DCard>
           </motion.div>
         </div>
       </div>

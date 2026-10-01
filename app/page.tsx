@@ -10,6 +10,7 @@ import Projects from "@/components/sections/Projects";
 import Websites from "@/components/sections/Websites";
 import Contact from "@/components/sections/Contact";
 import { useTheme } from "@/context/ThemeContext";
+import DarkBackgroundEffects from "@/components/ui/DarkBackgroundEffects";
 
 export default function Home() {
   const theme = useTheme();
@@ -23,6 +24,9 @@ export default function Home() {
         <div className="blob blob-2" />
         <div className="blob blob-3" />
       </div>
+
+      {/* DARK MODE FUTURISTIC BACKGROUND EFFECTS */}
+      <DarkBackgroundEffects />
 
       <NavBar />
 

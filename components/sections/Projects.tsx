@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import ProjectCarousel from "@/components/finalcomponents/projectCarousel";
 import { useLanguage } from "@/context/LanguageContext";
+import Tilt3DCard from "@/components/ui/Tilt3DCard";
 
 const SPOTLIGHTS = [
   {
@@ -78,13 +79,13 @@ export default function Projects() {
 
         <div className="space-y-12">
           {SPOTLIGHTS.map((project, idx) => (
+             <Tilt3DCard key={project.title} rotateDepth={4}>
             <motion.div
-              key={project.title}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8, delay: idx * 0.2 }}
-              className={`relative glass-morphism group mx-auto max-w-5xl rounded-[40px] shadow-2xl overflow-hidden p-8 md:p-12 border-0`}
+              className={`relative glass-morphism dark-gold-glow-card group mx-auto max-w-5xl rounded-[40px] shadow-2xl overflow-hidden p-8 md:p-12 border-0`}
             >
               {/* Overlay for specific project gradients - softened to keep glass feel */}
               <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-40 -z-10`} />
@@ -142,6 +143,7 @@ export default function Projects() {
                 </div>
               </div>
             </motion.div>
+              </Tilt3DCard>
           ))}
         </div>
 

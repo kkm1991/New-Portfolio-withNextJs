@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
+import Tilt3DCard from "@/components/ui/Tilt3DCard";
 
 const EXPERIENCES = [
   {
@@ -78,7 +79,8 @@ export default function Experience() {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className={`ml-16 md:ml-0 md:w-[42%] group`}
               >
-                <div className="glass-morphism relative overflow-hidden rounded-[32px] p-8 shadow-xl transition-all duration-300 hover:shadow-amber-500/10 hover:border-amber-500/30">
+                <Tilt3DCard>
+                <div className="glass-morphism dark-gold-glow-card relative overflow-hidden rounded-[32px] p-8 shadow-xl transition-all duration-300 hover:shadow-amber-500/10 hover:border-amber-500/30">
                   {/* Subtle card glow */}
                   <div className="absolute -top-10 -right-10 w-32 h-32 bg-amber-500/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   
@@ -94,6 +96,7 @@ export default function Experience() {
                     ))}
                   </div>
                 </div>
+                </Tilt3DCard>
               </motion.div>
               
               {/* Vertical spacing for mobile */}

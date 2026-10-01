@@ -180,7 +180,7 @@ export default function ProjectCarousel() {
               className={clsx(
                 "absolute w-[300px] h-[650px] select-none rounded-3xl p-0 overflow-hidden",
                 "border border-white/10",
-                "shadow-[0_25px_60px_rgba(0,0,0,0.5)]",
+                "shadow-[0_5px_20px_rgba(0,0,0,0.5)]",
                 isActive ? "cursor-grab z-20" : "cursor-default"
               )}
               onPointerDown={() => { setIsHolding(true); setIsPaused(true); }}

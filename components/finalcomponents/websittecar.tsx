@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import clsx from "clsx";
+import Tilt3DCard from "@/components/ui/Tilt3DCard";
 
 interface WebsiteCardProps {
   name: string;
@@ -32,11 +33,12 @@ const WebsiteCard = ({
   };
 
   return (
+    <Tilt3DCard>
     <div
       className={clsx(
-        "relative rounded-3xl p-6 block",
+        "relative rounded-3xl p-6 block dark-gold-glow-card",
         "shadow-xl transition-all duration-300 overflow-hidden",
-        "bg-slate-800/40 dark:bg-slate-800/45",
+        "bg-blue-800/15 dark:bg-slate-800/45",
         "backdrop-blur-xl",
         "border border-white/10 dark:border-white/15",
         featured && "shadow-[0_0_40px_rgba(245,158,11,0.15)]",
@@ -118,6 +120,7 @@ const WebsiteCard = ({
         )}
       </button>
     </div>
+    </Tilt3DCard>
   );
 };
 
